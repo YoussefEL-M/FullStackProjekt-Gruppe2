@@ -41,4 +41,18 @@ public class WishController {
 
     }
 
+    @GetMapping("/createUser")
+    public String createUser() {
+
+        return "createUser";
+    }
+
+    @PostMapping("/createUser")
+    public String createAnAccount(@RequestParam("username")String username, RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addAttribute("username", username);
+
+        return "redirect:/loggingIn";
+    }
+
 }
