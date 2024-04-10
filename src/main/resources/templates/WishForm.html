@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/submitWish" method="post" id="wishForm">
+  <label for="name">Navn:</label>
+  <input type="text" id="name" name="name" required><br>
+
+  <label for="price">Pris:</label>
+  <input type="number" id="price" name="price" required><br>
+
+  <label for="amount">Antal ønsket:</label>
+  <input type="number" id="amount" name="amount" required><br>
+
+  <label for="description">Beskrivelse:</label><br>
+  <textarea id="description" name="description" rows="4" required></textarea><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
