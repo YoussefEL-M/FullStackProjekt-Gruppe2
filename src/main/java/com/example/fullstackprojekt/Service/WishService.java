@@ -13,8 +13,8 @@ public class WishService {
     @Autowired
     private WishRepo wishRepository;
 
-    /*public List<Wish> getAllWishes() {
-        return wishRepository.getAllWishes;
+    public List<Wish> getAllWishes() {
+        return wishRepository.getAllWishes();
     }
 
     public void createWish(Wish wish) {
@@ -31,5 +31,5 @@ public class WishService {
 
     public Wish getWishById(int id) {
         return wishRepository.getWishById(id);
-    }*/
+    }
 }

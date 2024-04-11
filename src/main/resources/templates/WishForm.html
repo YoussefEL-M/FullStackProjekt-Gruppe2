@@ -1,25 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Opret ønske</title>
+  <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}">
 </head>
 <body>
-<form action="/submitWish" method="post" id="wishForm">
-  <label for="name">Navn:</label>
-  <input type="text" id="name" name="name" required><br>
+<div class="createWishForm">
+  <h2>Opret et nyt ønske</h2>
+  <form action="/createWish" method="post" id="wishForm">
+    <label for="name-field">Navn på ønske:</label>
+    <input  id="name-field" name="name" type="text" required><br>
 
-  <label for="price">Pris:</label>
-  <input type="number" id="price" name="price" required><br>
+    <label for="price">Pris:</label>
+    <input id="price" name="price" type="number" required><br>
 
-  <label for="amount">Antal ønsket:</label>
-  <input type="number" id="amount" name="amount" required><br>
+    <label for="amount">Antal ønsket:</label>
+    <input id="amount" name="amount" type="number" required><br>
 
-  <label for="description">Beskrivelse:</label><br>
-  <textarea id="description" name="description" rows="4" required></textarea><br>
+    <label for="description">Beskrivelse:</label><br>
+    <textarea id="description" name="description" rows="4" required></textarea><br>
 
-  <button type="submit">Submit</button>
-</form>
+    <label for="url-field">URL:</label>
+    <input id="url-field" name="url" type="text" readonly>
 
+    <button type="submit" value="Opret ønske">Submit</button>
+  </form>
+</div>
 </body>
 </html>
