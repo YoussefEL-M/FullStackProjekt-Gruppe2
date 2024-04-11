@@ -2,8 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ønsketitel</title>
-    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}">
+    <title>Ønskelisten</title>
+    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}" >
+    <link rel="stylesheet" href="/CSS/wishlist.css">
 </head>
 <body>
 <header>
@@ -18,24 +19,54 @@
 </header>
 
 <div class="main-content">
-    <div class="container">
-        <h1>Velkommen til Danmarks bedste ønskeliste!</h1>
-        <p> Det er her du opretter du kan oprette og håndtere din egen ønskeliste!</p>
+    <div class="container-frontpage">
+        <h1>Velkommen til Danmarks bedste ønskeliste</h1>
+        <p> Det er her du kan oprette og håndtere din egen ønskeliste!</p>
     </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Navn på ønske</th>
+        <th>Pris</th>
+        <th>Antal ønsket</th>
+        <th>Beskrivelse</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wish: ${wishes}">
+        <td th:text="${wish.name}"></td>
+        <td th:text="${wish.price}"></td>
+        <td th:text="${wish.amount}"></td>
+        <td th:text="${wish.description}"></td>
+        <td> <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Opdater ønske</a></td>
+        <td> <a th:href="@{'/delete/' + ${wish.id}}" href="forside.html">Slet ønske</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="create">
+    <h2> Opret nyt ønske</h2>
+    <a href="WishForm.html" th:href="@{/WishForm}">Klik her for at oprette et nyt ønske</a>
 </div>
 
 <footer>
     <div class="container">
         <div class="contact-form">
-            <h2>Contact Us</h2>
+            <h2>Kontakt os</h2>
             <form>
                 <label for="name">Navn:</label>
                 <input type="text" id="name" name="name" required>
+
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" required>
+
                 <label for="message">Besked:</label>
                 <textarea id="message" name="message" required></textarea>
+
                 <button type="submit">Indsend</button>
+
             </form>
         </div>
         <div class="newsletter-form">
@@ -46,6 +77,7 @@
                 <button type="submit">Abonner</button>
             </form>
         </div>
+
     </div>
 </footer>
 </body>
