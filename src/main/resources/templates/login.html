@@ -3,27 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+    <link rel="stylesheet" href="../static/CSS/login.css">
 </head>
 <body>
 
-<div>
+<div class="loginForm">
     <form action="/login" method="post">
-        <div>
+        <div class="loginFields">
             <label for="username">Brugernavn</label>
             <input type="text" id="username" placeholder="Indtast brugernavn" required>
         </div>
 
-        <div>
+        <div class="loginFields">
             <label for="password">Adgangskode</label>
             <input type="password" id="password" placeholder="Indtast adgangskode" required>
         </div>
 
-        <div>
-            <input type="submit" value="Login">
+
+        <div class="buttons">
+            <div class="loginButton">
+                <input type="submit" value="Login">
+            </div>
+
+            <!--<div class="aButton">
+                <input type="reset" value="Annuller">
+            </div>
+            -->
+
         </div>
 
-        <div>
-            <p>Har du ikke en bruger? Opret en bruger <a href="/createUser">her</a></p>
+        <div id="createuseroption">
+            <p>Har du ikke en bruger?</p>
+            <p>Opret en bruger <a href="/createUser">her</a></p>
         </div>
 
 
