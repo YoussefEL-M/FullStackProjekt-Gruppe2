@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>opret bruger</title>
+    <link rel="stylesheet" href="../static/CSS/login.css">
 </head>
 <body>
 
-    <div>
-        <label for="brugernavn">Brugernavn</label>
-        <input type="text" id="brugernavn" placeholder="Indtast dit brugernavn" required>
+    <div class="createUserForm">
+        <form action="/" method="post"></form>
+            <div class="createUserFields">
+                <label for="brugernavn">Brugernavn</label>
+                <input type="text" id="brugernavn" placeholder="Indtast dit brugernavn" required>
+            </div>
+
+            <div class="createUserFields">
+                <label for="adgangskode">Adgangskode</label>
+                <input type="password" id="adgangskode" placeholder="Skriv din adgangskode" required>
+            </div>
+
+            <div>
+                <label for="accept">Jeg er indforstået med diverse krav og betingelser</label>
+                <input type="checkbox" id="accept" required>
+            </div>
+
+            <div id="createUserButton">
+                <input type="submit" value="Opret bruger">
+            </div>
     </div>
 
-    <div>
-        <label for="adgangskode">Adgangskode</label>
-        <input type="password" id="adgangskode" placeholder="Skriv din adgangskode" required>
-    </div>
-
-    <div>
-        <label for="accept">Jeg er indforstået med diverse krav og betingelser</label>
-        <input type="checkbox" id="accept" required>
-    </div>
-
-    <div>
-        <input type="submit" value="Opret bruger">
-    </div>
 
 
 

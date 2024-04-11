@@ -1,31 +1,69 @@
-.loginForm {
-    display:block;
+body {
+    background: linear-gradient(to right, lightskyblue 0%,cornflowerblue 10%, blueviolet 30%, mediumpurple 60%, rebeccapurple 100%);
+}
+
+.loginForm form{
     justify-items: center;
     justify-content: space-around;
-    height:250px;
-    border-radius: 15px;
-    border: 2px ridge grey;
+    height:450px;
+    border-radius: 10px;
+    border: 2px ridge #dbdede;
     padding:30px;
     background-color: rgba(165, 196, 255, 0.6);
-    margin:40px auto;
-    width:350px;
+    margin:30px auto;
+    width:320px;
+    flex-direction: column;
+    display:flex;
 
+}
+
+.loginForm input[type="text"],
+            input[type="password"],
+            input[type="submit"]{
+
+    width:calc(100% - 15px);
+    border:none;
+    background-color:transparent;
+    margin-top:10px;
+    cursor:pointer;
+
+
+}
+
+.loginForm input[type="submit"] {
+
+    border: none;
+    margin: 5px 0;
+    font-size: 1.1rem;
+    transition: background-color 1.0s;
+    font-family: sans-serif;
+
+
+
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .loginFields {
     margin-bottom: 25px;
     align-content: flex-start;
     text-align: left;
-
-
-
+    border-bottom:3px solid black;
 }
+.glemt {
+
+    text-align:right;
+}
+
 
 
 #createuseroption {
 
     text-align: center;
-    margin-top:50px;
+    margin-top:45px;
 }
 
 .buttons {
@@ -33,13 +71,19 @@
 }
 
 .loginButton {
-    display:block;
-    cursor: pointer;
+    margin-left: auto;
     margin-right:auto;
-    margin-left:auto;
     align-content: center;
     margin-top:25px;
     text-align: center;
+    border: 2px solid rgb(125, 131, 131);
+    background-color: #dbdede;
+    border-radius: 15px;
+    padding:4px;
+    width:250px;
+    background: linear-gradient(to right, lightskyblue 0%,cornflowerblue 10%, blueviolet 30%, mediumpurple 60%, rebeccapurple 100%);
+
+
 
 
 }

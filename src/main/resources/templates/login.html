@@ -9,28 +9,45 @@
 
 <div class="loginForm">
     <form action="/login" method="post">
+        <h1>Login</h1>
         <div class="loginFields">
-            <label for="username">Brugernavn</label>
-            <input type="text" id="username" placeholder="Indtast brugernavn" required>
+            <div>
+                <label for="username">Brugernavn</label>
+            </div>
+            <div class="inputField">
+                <input type="text" id="username" placeholder="Indtast brugernavn..." required>
+            </div>
+
         </div>
 
         <div class="loginFields">
-            <label for="password">Adgangskode</label>
-            <input type="password" id="password" placeholder="Indtast adgangskode" required>
+            <div>
+                <label for="password">Adgangskode</label>
+            </div>
+            <div class="inputField">
+                <input type="password" id="password" placeholder="Indtast adgangskode..." required>
+            </div>
+        </div>
+        <div class="glemt">
+            <p><a href="/">Glemt adgangskode?</a></p>
         </div>
 
 
-        <div class="buttons">
+        <!--<div class="buttons"> -->
             <div class="loginButton">
                 <input type="submit" value="Login">
             </div>
+
+
+
+
 
             <!--<div class="aButton">
                 <input type="reset" value="Annuller">
             </div>
             -->
 
-        </div>
+        <!--</div> -->
 
         <div id="createuseroption">
             <p>Har du ikke en bruger?</p>
