@@ -41,7 +41,7 @@ public class WishController {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
-        return "loggedIn";
+        return "redirect:/loggedIn";
 
     }
     @GetMapping("/WishForm")
@@ -104,10 +104,10 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("username")String username, @RequestParam("password") String password, RedirectAttributes redirectAttributes) {
+    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
 
-        redirectAttributes.addAttribute("username", username);
-        redirectAttributes.addAttribute("password", password);
+        redirectAttributes.addAttribute("username", brugernavn);
+        redirectAttributes.addAttribute("password", adgangskode);
 
         return "redirect:/loggingIn";
     }
