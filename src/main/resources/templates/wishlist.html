@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ønsketitel</title>
-    <link rel="stylesheet" href="/CSS/ønskeliste.css" th:href="@{/CSS/ønskeliste.css}">
+    <link rel="stylesheet" href="/CSS/wishlist.css" th:href="@{/CSS/wishlist.css}">
 </head>
 <body>
 <header>
@@ -19,7 +19,7 @@
 
 <div class="wish-container" th:each="wish : ${wishlist}">
     <div class="wish-item">
-        <a th:href="${wish.url}"><h4 th:text="${wish.name} (${wish.amount}) - ${wish.price} kr.">Wish name.</h4></a>
+        <a th:href="${wish.url}"><h4 th:text="${wish.name + ' (' + wish.amount + ')' + ' - ' + wish.price} +' kr.'">Wish name.</h4></a>
         <p th:text="${wish.description}">Description.</p>
         <img th:src="${wish.url}" alt="If this image displays, I'll eat my hat.">
     </div>

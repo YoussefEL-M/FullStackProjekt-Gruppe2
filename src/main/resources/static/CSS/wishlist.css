@@ -108,8 +108,8 @@ button:hover {
 .wish-container{
     height: 420px;
     width: 320px;
-    display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
+    display: inline-grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
     padding: 20px;
 }
