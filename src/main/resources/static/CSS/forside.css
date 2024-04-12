@@ -70,7 +70,7 @@ th, td {
 
 th {
     background-color: #814CBB;
-    color: #fff;
+    color: #000000;
 }
 
 .create {
@@ -78,9 +78,14 @@ th {
     margin-top: 20px;
 }
 
-.create h2 {
+.createWishForm label{
+    color: black;
+}
+
+.createWishForm {
     color: #000000;
 }
+
 
 .create a:hover {
     text-decoration: underline;

@@ -18,9 +18,6 @@ import java.util.List;
 public class WishController {
 
     @Autowired
-    WishService wishService;
-
-    @Autowired
     UserService userService;
 
     /*@GetMapping("/")
@@ -55,10 +52,12 @@ public class WishController {
             @RequestParam("amount") int amount,
             @RequestParam("description") String description
     ){
-        Wish wish = new Wish(name, price, amount, description);
 
-        wishService.createWish(wish);
-        return "redirect:/"; //skal ændres til ønskeliste når den er færdig
+        Wish newWish = new Wish(name, price, amount, description);
+        wishService.createWish(newWish);
+
+
+        return "redirect:/wishlist?id="+newWish.getId();
     }
 
     @GetMapping("/")
@@ -84,18 +83,23 @@ public class WishController {
             @RequestParam("description") String description
     ){
 
-        Wish wish = new Wish(id,name, price, amount, description);
+        Wish wishToUpdate = wishService.getWishById(id);
 
-        wishService.updateWish(wish);
+        wishToUpdate.setName(name);
+        wishToUpdate.setPrice(price);
+        wishToUpdate.setAmount(amount);
+        wishToUpdate.setDescription(description);
 
-        return "redirect:/";
+        wishService.updateWish(wishToUpdate);
+
+        return "redirect:/wishlist?id=" + wishToUpdate.getId();
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id){
         wishService.deleteWishById(id);
 
-        return "redirect:/"; //skal ændres til wishlist
+        return "redirect:/wishlist?id="+id;
     }
     @GetMapping("/createUser")
     public String createUser() {
