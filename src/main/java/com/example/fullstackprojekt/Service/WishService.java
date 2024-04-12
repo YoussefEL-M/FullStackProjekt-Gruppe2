@@ -16,6 +16,9 @@ public class WishService {
     public List<Wish> getAllWishes() {
         return wishRepository.getAllWishes();
     }
+    public List<Wish> getWishesInWishlist(int wishlist_id)  {
+        return wishRepository.getWishesInWishlist(wishlist_id);
+    }
 
     public void createWish(Wish wish) {
         wishRepository.createWish(wish);

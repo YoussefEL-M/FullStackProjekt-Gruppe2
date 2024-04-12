@@ -4,6 +4,10 @@ import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.fullstackprojekt.Repository.WishlistRepo;
+import com.example.fullstackprojekt.Service.WishService;
+import com.example.fullstackprojekt.Service.WishlistService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +19,10 @@ import java.util.List;
 
 @Controller
 public class WishController {
+    @Autowired
+    private WishlistService wishlistService;
+    @Autowired
+    private WishService wishService;
 
     @Autowired
     WishService wishService;
@@ -97,4 +105,9 @@ public class WishController {
         return "redirect:/"; //skal ændres til wishlist
     }
 
+    @GetMapping("/wishlist")
+    public String wishlist(@RequestParam("id") int id, Model model){
+        model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+        return "wishlist";
+    }
 }
