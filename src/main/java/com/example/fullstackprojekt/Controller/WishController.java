@@ -4,6 +4,10 @@ import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.fullstackprojekt.Repository.WishlistRepo;
+import com.example.fullstackprojekt.Service.WishService;
+import com.example.fullstackprojekt.Service.WishlistService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +19,10 @@ import java.util.List;
 
 @Controller
 public class WishController {
-
     @Autowired
-    WishService wishService;
+    private WishlistService wishlistService;
+    @Autowired
+    private WishService wishService;
 
     @Autowired
     UserService userService;
@@ -28,10 +33,11 @@ public class WishController {
     }*/
 
 
-    @GetMapping("/login")
-    public String login() {
+    @PostMapping("/login")
+    public String login(@RequestParam("username") String username,RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute("username", username);
 
-        return "/login";
+        return "redirect:/loggingIn";
 
     }
 
@@ -54,10 +60,12 @@ public class WishController {
             @RequestParam("amount") int amount,
             @RequestParam("description") String description
     ){
-        Wish wish = new Wish(name, price, amount, description);
 
-        wishService.createWish(wish);
-        return "redirect:/"; //skal ændres til ønskeliste når den er færdig
+        Wish newWish = new Wish(name, price, amount, description);
+        wishService.createWish(newWish);
+
+
+        return "redirect:/wishlist?id="+newWish.getId();
     }
 
     @GetMapping("/")
@@ -83,18 +91,23 @@ public class WishController {
             @RequestParam("description") String description
     ){
 
-        Wish wish = new Wish(id,name, price, amount, description);
+        Wish wishToUpdate = wishService.getWishById(id);
 
-        wishService.updateWish(wish);
+        wishToUpdate.setName(name);
+        wishToUpdate.setPrice(price);
+        wishToUpdate.setAmount(amount);
+        wishToUpdate.setDescription(description);
 
-        return "redirect:/";
+        wishService.updateWish(wishToUpdate);
+
+        return "redirect:/wishlist?id=" + wishToUpdate.getId();
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id){
         wishService.deleteWishById(id);
 
-        return "redirect:/"; //skal ændres til wishlist
+        return "redirect:/wishlist?id="+id;
     }
 
     @GetMapping("/createUser")
@@ -112,4 +125,9 @@ public class WishController {
         return "redirect:/loggingIn";
     }
 
+    @GetMapping("/wishlist")
+    public String wishlist(@RequestParam("id") int id, Model model){
+        model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+        return "wishlist";
+    }
 }
