@@ -97,15 +97,19 @@ public class WishController {
 
         return "redirect:/"; //skal ændres til wishlist
     }
+    @GetMapping("/createUser")
+    public String createUser() {
+
+        return "createUser";
+    }
 
     @PostMapping("/createUser")
     public String createUser(
-            @RequestParam("name") String name,
             @RequestParam("username") String username,
             @RequestParam("password") String password
 
     ){
-        User user = new User(name, username, password);
+        User user = new User(username, password);
 
         userService.createUser(user);
         return "redirect:/"; //skal ændres til ønskeliste når den er færdig
