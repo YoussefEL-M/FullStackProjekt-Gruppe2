@@ -33,11 +33,10 @@ public class WishController {
     }*/
 
 
-    @PostMapping("/login")
-    public String login(@RequestParam("username") String username,RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("username", username);
+    @GetMapping("/login")
+    public String login() {
 
-        return "redirect:/loggingIn";
+        return "/login";
 
     }
 
@@ -47,9 +46,10 @@ public class WishController {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
-        return "redirect:/loggedIn";
+        return "loggedIn";
 
     }
+
     @GetMapping("/WishForm")
     public String create(){return "WishForm";}
 
