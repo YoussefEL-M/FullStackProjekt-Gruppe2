@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ønsketitel</title>
+    <link rel="stylesheet" href="/CSS/ønskeliste.css" th:href="@{/CSS/ønskeliste.css}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <div class="login-button">
+            <button>Login</button>
+        </div>
+    </div>
+</header>
+
+<div class="wish-container" th:each="wish : ${wishlist}">
+    <div class="wish-item">
+        <a th:href="${wish.url}"><h4 th:text="${wish.name} (${wish.amount}) - ${wish.price} kr.">Wish name.</h4></a>
+        <p th:text="${wish.description}">Description.</p>
+        <img th:src="${wish.url}" alt="If this image displays, I'll eat my hat.">
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <label for="name">Navn:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Besked:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Indsend</button>
+            </form>
+        </div>
+        <div class="newsletter-form">
+            <h2>Skriv dig up til vores nyhedsbrev!</h2>
+            <form>
+                <label for="newsletter-email">E-mail:</label>
+                <input type="email" id="newsletter-email" name="newsletter-email" required>
+                <button type="submit">Abonner</button>
+            </form>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
