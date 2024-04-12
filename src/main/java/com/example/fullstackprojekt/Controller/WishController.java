@@ -19,6 +19,7 @@ import java.util.List;
 
 @Controller
 public class WishController {
+
     @Autowired
     private WishlistService wishlistService;
     @Autowired
@@ -58,7 +59,8 @@ public class WishController {
             @RequestParam("name") String name,
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
-            @RequestParam("description") String description
+            @RequestParam("description") String description,
+            @RequestParam("reserved") boolean reserved
     ){
 
         Wish newWish = new Wish(name, price, amount, description);
@@ -88,10 +90,12 @@ public class WishController {
             @RequestParam("name") String name,
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
-            @RequestParam("description") String description
+            @RequestParam("description") String description,
+            @RequestParam("reserved") boolean reserved
     ){
 
         Wish wishToUpdate = wishService.getWishById(id);
+        Wish wish = new Wish(id,name, price, amount, description, reserved);
 
         wishToUpdate.setName(name);
         wishToUpdate.setPrice(price);
@@ -122,7 +126,7 @@ public class WishController {
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        return "redirect:/loggingIn";
+        return "redirect:/login";
     }
 
     @GetMapping("/wishlist")
