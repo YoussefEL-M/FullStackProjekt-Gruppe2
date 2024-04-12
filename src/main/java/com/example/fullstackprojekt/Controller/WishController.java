@@ -28,20 +28,20 @@ public class WishController {
     }*/
 
 
-    @PostMapping("/login")
-    public String login(@RequestParam("username") String username,RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("username", username);
+    @GetMapping("/login")
+    public String login() {
 
-        return "redirect:/loggingIn";
+        return "/login";
 
     }
 
-    @GetMapping("/loggingIn")
-    public String loggedIn(@RequestParam("username") String username, Model model) {
+    @PostMapping("/loggingIn")
+    public String loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 
         model.addAttribute("username", username);
+        model.addAttribute("password", password);
 
-        return "loggedIn";
+        return "redirect:/loggedIn";
 
     }
     @GetMapping("/WishForm")
@@ -95,6 +95,21 @@ public class WishController {
         wishService.deleteWishById(id);
 
         return "redirect:/"; //skal ændres til wishlist
+    }
+
+    @GetMapping("/createUser")
+    public String createUser() {
+
+        return "createUser";
+    }
+
+    @PostMapping("/createUser")
+    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addAttribute("username", brugernavn);
+        redirectAttributes.addAttribute("password", adgangskode);
+
+        return "redirect:/loggingIn";
     }
 
 }
