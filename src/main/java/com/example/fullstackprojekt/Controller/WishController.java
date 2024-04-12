@@ -63,7 +63,7 @@ public class WishController {
             @RequestParam("reserved") boolean reserved
     ){
 
-        Wish newWish = new Wish(name, price, amount, description);
+        Wish newWish = new Wish(name, price, amount, description, reserved);
         wishService.createWish(newWish);
 
 
