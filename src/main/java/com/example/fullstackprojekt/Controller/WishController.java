@@ -1,5 +1,6 @@
 package com.example.fullstackprojekt.Controller;
 
+import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
@@ -97,19 +98,17 @@ public class WishController {
         return "redirect:/"; //skal ændres til wishlist
     }
 
-    @GetMapping("/createUser")
-    public String createUser() {
-
-        return "createUser";
-    }
-
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
+    public String createUser(
+            @RequestParam("name") String name,
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
 
-        redirectAttributes.addAttribute("username", brugernavn);
-        redirectAttributes.addAttribute("password", adgangskode);
+    ){
+        User user = new User(name, username, password);
 
-        return "redirect:/loggingIn";
+        userService.createUser(user);
+        return "redirect:/"; //skal ændres til ønskeliste når den er færdig
     }
 
 }
