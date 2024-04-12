@@ -17,12 +17,19 @@
     </div>
 </header>
 
-<div class="wish-container" th:each="wish : ${wishlist}">
-    <div class="wish-item">
-        <a th:href="${wish.url}"><h4 th:text="${wish.name + ' (' + wish.amount + ')' + ' - ' + wish.price} +' kr.'">Wish name.</h4></a>
+<div class="wish-container">
+    <div class="wish-item" th:each="wish : ${wishlist}">
+        <a th:href="@{${wish.url}}"><h4 th:text="${wish.name + ' (' + wish.amount + ')' + ' - ' + wish.price} + ' kr.'">Wish name.</h4></a>
         <p th:text="${wish.description}">Description.</p>
-        <img th:src="${wish.url}" alt="If this image displays, I'll eat my hat.">
+        <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat.">
+        <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Update wish</a>
+        <a th:href="@{'/delete/' + ${wish.id}}" href="wishlist.html">Delete wish</a>
     </div>
+</div>
+
+<div class="create">
+    <h2> Opret nyt ønske</h2>
+    <a href="WishForm.html" th:href="@{/WishForm}">Klik her for at oprette et nyt ønske</a>
 </div>
 
 <footer>

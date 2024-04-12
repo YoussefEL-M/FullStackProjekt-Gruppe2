@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="updateForm">
-    <form action="/update" method="post">
+    <form action="/updateWish" method="post">
 
         <input name="id" type="number" hidden th:value="${Wish.id}">
 
@@ -24,7 +24,7 @@
         <textarea id="description-field" name="description" rows="4" th:value="${Wish.description}"></textarea><br>
 
         <label for="url-field">URL:</label>
-        <input id="url-field" name="url" type="text" th:value="${Wish.url}" readonly>
+        <input id="url-field" name="url" type="text" th:value="${Wish.url}" >
 
         <input type="submit" value="Opret ønske">
 

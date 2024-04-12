@@ -25,10 +25,11 @@ tr:hover {
 .create {
     display: flex;
     flex-direction: column;
-    border:2px ridge darkgray;
+    border: 2px ridge darkgray;
     box-shadow: 0px 0px 5px whitesmoke;
     padding: 12px;
     align-items: center;
+}
 body {
     margin: 0;
     font-family: Arial, sans-serif;
