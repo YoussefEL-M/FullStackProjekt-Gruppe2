@@ -54,7 +54,7 @@ public class WishController {
             @RequestParam("description") String description
     ){
 
-        Wish newWish = new Wish(name, price, amount, description);
+        Wish newWish = new Wish(name, price, amount, description, reserved);
         wishService.createWish(newWish);
 
 
