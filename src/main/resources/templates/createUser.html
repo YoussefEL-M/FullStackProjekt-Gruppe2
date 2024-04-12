@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>create</title>
+    <title>opret bruger</title>
+    <link rel="stylesheet" href="../static/CSS/login.css" th:href="@{/CSS/login.css}">
 </head>
 <body>
+
+    <div class="loginForm">
+
+        <form action="/createUser" method="post">
+            <h1>Opret en bruger</h1>
+            <div class="loginFields">
+                <label for="brugernavn">Brugernavn</label>
+                <input type="text" id="brugernavn" placeholder="Indtast dit brugernavn..." required>
+            </div>
+
+            <div class="loginFields">
+                <label for="adgangskode">Adgangskode</label>
+                <input type="password" id="adgangskode" placeholder="Skriv din adgangskode..." required>
+            </div>
+
+            <div>
+                <label for="accept">Jeg har læst og forstået ... betingelser</label>
+                <input type="checkbox" id="accept" required>
+            </div>
+
+            <div class="loginButton">
+                <input type="submit" value="Opret bruger">
+            </div>
+        </form>
+    </div>
+
 
 
 

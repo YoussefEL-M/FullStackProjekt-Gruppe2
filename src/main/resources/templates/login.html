@@ -3,27 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+    <link rel="stylesheet" href="../static/CSS/login.css" th:href="@{/CSS/login.css}">
 </head>
 <body>
 
-<div>
+<div class="loginForm">
     <form action="/login" method="post">
-        <div>
-            <label for="username">Brugernavn</label>
-            <input type="text" id="username" placeholder="Indtast brugernavn">
+        <h1>Login</h1>
+        <div class="loginFields">
+            <div>
+                <label for="username">Brugernavn</label>
+            </div>
+            <div>
+                <input type="text" id="username" placeholder="Indtast brugernavn..." required>
+            </div>
+
         </div>
 
-        <div>
-            <label for="password">Adgangskode</label>
-            <input type="password" id="password" placeholder="Indtast adgangskode">
+        <div class="loginFields">
+            <div>
+                <label for="password">Adgangskode</label>
+            </div>
+            <div class="inputField">
+                <input type="password" id="password" placeholder="Indtast adgangskode..." required>
+            </div>
+        </div>
+        <div class="glemt">
+            <p><a href="/">Glemt adgangskode?</a></p>
         </div>
 
-        <div>
-            <input type="submit" value="Login">
-        </div>
 
-        <div>
-            <p>Har du ikke en bruger? Opret en bruger <a href="createUser.html">her</a></p>
+        <!--<div class="buttons"> -->
+            <div class="loginButton">
+                <input type="submit" value="Login">
+            </div>
+
+
+
+
+
+            <!--<div class="aButton">
+                <input type="reset" value="Annuller">
+            </div>
+            -->
+
+        <!--</div> -->
+
+        <div id="createuseroption">
+            <p>Har du ikke en bruger?</p>
+            <p>Opret en bruger <a href="/createUser">her</a></p>
         </div>
 
 
