@@ -24,7 +24,7 @@ public class WishController {
         return "redirect:/";
     }
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String login(@RequestParam("username") String username,RedirectAttributes redirectAttributes) {
         redirectAttributes.addAttribute("username", username);
 
@@ -32,7 +32,7 @@ public class WishController {
 
     }
 
-    @GetMapping("/loggingIn")
+    @PostMapping("/loggingIn")
     public String loggedIn(@RequestParam("username") String username, Model model) {
 
         model.addAttribute("username", username);
