@@ -7,15 +7,16 @@
 </head>
 <body>
 
-    <div class="createUserForm">
-        <h1>Opret en bruger</h1>
-        <form action="/createUser" method="post"></form>
-            <div class="createUserFields">
+    <div class="loginForm">
+
+        <form action="/createUser" method="post">
+            <h1>Opret en bruger</h1>
+            <div class="loginFields">
                 <label for="brugernavn">Brugernavn</label>
                 <input type="text" id="brugernavn" placeholder="Indtast dit brugernavn" required>
             </div>
 
-            <div class="createUserFields">
+            <div class="loginFields">
                 <label for="adgangskode">Adgangskode</label>
                 <input type="password" id="adgangskode" placeholder="Skriv din adgangskode" required>
             </div>
@@ -25,9 +26,10 @@
                 <input type="checkbox" id="accept" required>
             </div>
 
-            <div id="createUserButton">
+            <div class="loginButton">
                 <input type="submit" value="Opret bruger">
             </div>
+        </form>
     </div>
 
 
