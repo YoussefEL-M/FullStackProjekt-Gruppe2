@@ -39,9 +39,10 @@ public class WishController {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
-        return "redirect:/loggedIn";
+        return "loggedIn";
 
     }
+
     @GetMapping("/WishForm")
     public String create(){return "WishForm";}
 
