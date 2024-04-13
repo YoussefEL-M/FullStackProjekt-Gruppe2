@@ -53,4 +53,10 @@ public class UserRepo {
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, username, password);
     }
+
+    public void showReservation(int id, boolean owner) {
+
+
+
+    }
 }
