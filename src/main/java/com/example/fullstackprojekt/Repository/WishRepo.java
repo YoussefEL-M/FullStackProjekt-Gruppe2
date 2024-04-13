@@ -28,7 +28,7 @@ public class WishRepo {
     }
 
     public void createWish(Wish wish) {
-        String sql = "INSERT INTO wishes (´name´, price, amount, ´description´, url) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO wishes (name, price, amount, description, url) VALUES (?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl());
     }
 
@@ -44,7 +44,7 @@ public class WishRepo {
     }
 
     public void updateWish(Wish wish) {
-        String sql = "UPDATE wishes SET ´name´ = ?, price = ?, amount = ?, ´description´ = ?, url = ? WHERE id = ?";
+        String sql = "UPDATE wishes SET name = ?, price = ?, amount = ?, description = ?, url = ? WHERE id = ?";
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getId());
     }
 }

@@ -114,7 +114,7 @@ button:hover {
     padding: 20px;
 }
 
-.wish-item{
+.wish-item {
     border: 1px solid black;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     padding: 10px;
@@ -124,4 +124,23 @@ button:hover {
 .wish-item img {
     max-width: 100%;
     height: auto;
+}
+
+.wishlist-title {
+ padding-left: 20px;
+}
+
+.share-button {
+    margin-bottom: 10px;
+    display: flex;
+    padding-left: 20px;
+}
+
+.share-button button:hover {
+    background-color: #555;
+}
+
+.share-button button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease-out;
 }

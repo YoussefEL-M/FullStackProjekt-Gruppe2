@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Ønsketitel</title>
     <link rel="stylesheet" href="/CSS/wishlist.css" th:href="@{/CSS/wishlist.css}">
+    <script type="text/javascript" th:src="@{/scripts/shareButton.js}"></script>
 </head>
 <body>
 <header>
@@ -16,13 +17,20 @@
         </div>
     </div>
 </header>
-
+<div class="wishlist-title">
+    <h2 th:text="${listEntity.getName()}">Wishlist name.</h2>
+</div>
+<div class="wishlist-container">
+<div class="share-button">
+    <button type="button" onclick="navigator.clipboard.writeText(window.location.href)">Del ønskeliste</button>
+</div>
 <div class="wish-container" th:each="wish : ${wishlist}">
     <div class="wish-item">
         <a th:href="${wish.url}"><h4 th:text="${wish.name + ' (' + wish.amount + ')' + ' - ' + wish.price} +' kr.'">Wish name.</h4></a>
         <p th:text="${wish.description}">Description.</p>
         <img th:src="${wish.url}" alt="If this image displays, I'll eat my hat.">
     </div>
+</div>
 </div>
 
 <footer>

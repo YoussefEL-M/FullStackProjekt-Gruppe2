@@ -22,12 +22,12 @@ public class UserRepo {
     }
 
     public void createUser(User user) {
-        String sql = "INSERT INTO users (´name´, username, ´password´) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (name, username, password) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword());
     }
 
     public void updateUser(User user) {
-        String sql = "UPDATE users SET ´name´ = ?, username = ?, ´password´ = ? WHERE id = ?";
+        String sql = "UPDATE users SET name = ?, username = ?, password = ? WHERE id = ?";
         jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword(), user.getId());
     }
 
@@ -49,7 +49,7 @@ public class UserRepo {
     }
 
     public User getUserByUsernameAndPassword(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username = ? AND ´password´ = ?";
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, username, password);
     }

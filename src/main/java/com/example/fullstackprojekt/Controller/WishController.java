@@ -52,6 +52,7 @@ public class WishController {
     @GetMapping("/wishlist")
     public String wishlist(@RequestParam("id") int id, Model model){
         model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+        model.addAttribute("listEntity", wishlistService.getWishlistById(id));
         return "wishlist";
     }
 }
