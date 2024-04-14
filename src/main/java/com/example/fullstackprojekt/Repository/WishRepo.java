@@ -47,4 +47,14 @@ public class WishRepo {
         String sql = "UPDATE wishes SET name = ?, price = ?, amount = ?, description = ?, url = ? WHERE id = ?";
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getId());
     }
+
+    public void showReservation(int user_id, int wishlist_id, boolean owner, boolean reserved) {
+
+        if(!owner) {
+            String sql = "SELECT * FROM wishes WHERE user_id = ? AND wishlist_id = ? AND owner = false";
+
+
+        } else {String sql = "SELECT * FROM wishes WHERE user_id = ? AND wishlist_id = ? AND owner = true";}
+
+    }
 }
