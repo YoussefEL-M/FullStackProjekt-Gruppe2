@@ -59,11 +59,11 @@ header {
     align-items: center;
 }
 
-.logo img {
+/*.logo img {
     float: left;
-    height: 40px; /* Decreased logo size */
-    margin-left: 20px; /* Added some margin */
-}
+    height: 40px;
+    margin-left: 20px;
+}*/
 
 .login-button {
     float: right;

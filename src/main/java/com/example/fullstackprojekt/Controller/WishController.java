@@ -1,5 +1,6 @@
 package com.example.fullstackprojekt.Controller;
 
+import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
@@ -46,6 +47,8 @@ public class WishController {
 
         model.addAttribute("username", username);
         model.addAttribute("password", password);
+
+
 
         return "loggedIn";
 
@@ -121,12 +124,16 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
+    public String createAnAccount(@RequestParam("brugernavn") String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
 
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        return "redirect:/login";
+        User newUser = new User();
+
+        userService.createUser(newUser);
+
+        return "redirect:/wishlist?id="+newUser.getId();
     }
 
     @GetMapping("/wishlist")
