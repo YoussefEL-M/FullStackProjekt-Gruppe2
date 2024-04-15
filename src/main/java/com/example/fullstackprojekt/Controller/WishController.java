@@ -1,5 +1,6 @@
 package com.example.fullstackprojekt.Controller;
 
+import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
@@ -126,6 +127,9 @@ public class WishController {
 
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
+
+        User user = new User(brugernavn, adgangskode);
+        userService.createUser(user);
 
         return "redirect:/login";
     }

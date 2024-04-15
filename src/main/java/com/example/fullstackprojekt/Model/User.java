@@ -26,6 +26,11 @@ public class User {
         this.owner = owner;
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public boolean isOwner() {
         return owner;
     }
