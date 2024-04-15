@@ -91,11 +91,12 @@ public class WishController {
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
             @RequestParam("description") String description,
-            @RequestParam("reserved") boolean reserved
+            @RequestParam("reserved") boolean reserved,
+            @RequestParam("user_id") int user_id
     ){
 
         Wish wishToUpdate = wishService.getWishById(id);
-        Wish wish = new Wish(id,name, price, amount, description, reserved);
+        Wish wish = new Wish(id,name, price, amount, description, reserved, user_id);
 
         wishToUpdate.setName(name);
         wishToUpdate.setPrice(price);
