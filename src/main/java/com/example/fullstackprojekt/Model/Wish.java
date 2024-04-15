@@ -2,9 +2,11 @@ package com.example.fullstackprojekt.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.UUID;
 
 @Entity
@@ -103,6 +105,4 @@ public class Wish {
         UUID uuid = UUID.randomUUID();
         return uuid.toString();
     }
-
-
 }

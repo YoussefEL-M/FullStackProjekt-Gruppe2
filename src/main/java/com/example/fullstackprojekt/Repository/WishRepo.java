@@ -21,6 +21,12 @@ public class WishRepo {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
+        public List<Wish> getWishesInWishlist(int id) {
+        String sql = "SELECT * FROM wishes WHERE wishlist_id = ?";
+        RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
+        return jdbcTemplate.query(sql, rowMapper, id);
+    }
+
     public void createWish(Wish wish) {
         String sql = "INSERT INTO wishes (name, price, amount, description, url) VALUES (?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl());

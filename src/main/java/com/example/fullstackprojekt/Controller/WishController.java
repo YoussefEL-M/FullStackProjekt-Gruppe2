@@ -5,6 +5,10 @@ import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.fullstackprojekt.Repository.WishlistRepo;
+import com.example.fullstackprojekt.Service.WishService;
+import com.example.fullstackprojekt.Service.WishlistService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,11 @@ import java.util.List;
 
 @Controller
 public class WishController {
+
+    @Autowired
+    private WishlistService wishlistService;
+    @Autowired
+    private WishService wishService;
 
     @Autowired
     UserService userService;
@@ -39,6 +48,8 @@ public class WishController {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
+
+
         return "loggedIn";
 
     }
@@ -51,7 +62,8 @@ public class WishController {
             @RequestParam("name") String name,
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
-            @RequestParam("description") String description
+            @RequestParam("description") String description,
+            @RequestParam("reserved") boolean reserved
     ){
 
         Wish newWish = new Wish(name, price, amount, description, reserved);
@@ -81,10 +93,12 @@ public class WishController {
             @RequestParam("name") String name,
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
-            @RequestParam("description") String description
+            @RequestParam("description") String description,
+            @RequestParam("reserved") boolean reserved
     ){
 
         Wish wishToUpdate = wishService.getWishById(id);
+        Wish wish = new Wish(id,name, price, amount, description, reserved);
 
         wishToUpdate.setName(name);
         wishToUpdate.setPrice(price);
@@ -102,6 +116,7 @@ public class WishController {
 
         return "redirect:/wishlist?id="+id;
     }
+
     @GetMapping("/createUser")
     public String createUser() {
 
@@ -109,21 +124,21 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createUser(@RequestParam("username") String username, @RequestParam("password") String password){
-        User user = new User(username, password);
+    public String createAnAccount(@RequestParam("brugernavn") String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
 
-        userService.createUser(user);
+        redirectAttributes.addAttribute("username", brugernavn);
+        redirectAttributes.addAttribute("password", adgangskode);
 
+        User newUser = new User();
 
-        return "redirect:";
+        userService.createUser(newUser);
+
+        return "redirect:/wishlist?id="+newUser.getId();
     }
 
-//    @PostMapping("/createUser")
-//    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
-//
-//        redirectAttributes.addAttribute("username", brugernavn);
-//        redirectAttributes.addAttribute("password", adgangskode);
-//
-//        return "redirect:/loggingIn";
-//    }
+    @GetMapping("/wishlist")
+    public String wishlist(@RequestParam("id") int id, Model model){
+        model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+        return "wishlist";
+    }
 }
