@@ -42,7 +42,7 @@ public class WishController {
 
     }
 
-    @PostMapping("/loggingin")
+    @PostMapping("/wishlist")
     public String loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 
         model.addAttribute("username", username);
