@@ -42,7 +42,7 @@ public class WishController {
 
     }
 
-    @PostMapping("/loggingIn")
+    @PostMapping("/loggingin")
     public String loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 
         model.addAttribute("username", username);
@@ -50,7 +50,7 @@ public class WishController {
 
 
 
-        return "loggedIn";
+        return "/wishlist";
 
     }
 
@@ -129,7 +129,7 @@ public class WishController {
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        User newUser = new User();
+        User newUser = new User(brugernavn,adgangskode);
 
         userService.createUser(newUser);
 
