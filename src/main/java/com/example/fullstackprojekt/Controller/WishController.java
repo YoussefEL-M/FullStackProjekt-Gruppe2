@@ -104,15 +104,21 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createUser(
-            @RequestParam("username") String username,
-            @RequestParam("password") String password
-
-    ){
+    public String createUser(@RequestParam("username") String username, @RequestParam("password") String password){
         User user = new User(username, password);
 
         userService.createUser(user);
-        return "redirect:/"; //skal ændres til ønskeliste når den er færdig
+
+
+        return "redirect:";
     }
 
+//    @PostMapping("/createUser")
+//    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
+//
+//        redirectAttributes.addAttribute("username", brugernavn);
+//        redirectAttributes.addAttribute("password", adgangskode);
+//
+//        return "redirect:/loggingIn";
+//    }
 }
