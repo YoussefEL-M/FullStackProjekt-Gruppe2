@@ -24,6 +24,8 @@
         <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat.">
         <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Update wish</a>
         <a th:href="@{'/delete/' + ${wish.id}}" href="wishlist.html">Delete wish</a>
+        <span th:if="${wish.reserved == 'true'}">Reserveret</span>
+        <a th:unless="${wish.reserved == 'false'}"><button>Reserver ønske</button></a>
     </div>
 </div>
 

@@ -2,10 +2,7 @@ package com.example.fullstackprojekt.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
 
 import java.util.UUID;
 
@@ -20,12 +17,13 @@ public class Wish {
     private String description;
     private String url;
     private boolean reserved;
+    private int user_id;
 
     public Wish() {
 
     }
 
-    public Wish(int id, String name, double price, int amount, String description, boolean reserved) {
+    public Wish(int id, String name, double price, int amount, String description, boolean reserved, int user_id) {
 
         this.id = id;
         this.name = name;
@@ -34,6 +32,7 @@ public class Wish {
         this.description = description;
         this.url = generateUniqueURL();
         this.reserved = reserved;
+        this.user_id = user_id;
     }
 
     public Wish(String name, double price, int amount, String description, boolean reserved) {
@@ -99,6 +98,14 @@ public class Wish {
 
     public void setReserved(boolean reserved) {
         this.reserved = reserved;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     private String generateUniqueURL() {

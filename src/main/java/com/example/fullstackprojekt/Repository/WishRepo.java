@@ -48,13 +48,17 @@ public class WishRepo {
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getId());
     }
 
-    public void showReservation(int user_id, int wishlist_id, boolean owner, boolean reserved) {
+    public List<Wish> showReservation(int user_id, int wishlist_id, boolean owner, boolean reserved) {
 
-        if(!owner) {
-            String sql = "SELECT * FROM wishes WHERE user_id = ? AND wishlist_id = ? AND owner = false";
-
-
-        } else {String sql = "SELECT * FROM wishes WHERE user_id = ? AND wishlist_id = ? AND owner = true";}
+        if(owner == false) {
+            String sql = "SELECT * FROM wishes WHERE user_id = ? AND wishlist_id = ?";
+            RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
+            return jdbcTemplate.query(sql, rowMapper, user_id, wishlist_id);
+        } else {
+            String sql ="SELECT name, price, amount, description, url FROM wishes WHERE user_id = ? AND wishlist_id = ?";
+            RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
+            return jdbcTemplate.query(sql, rowMapper, user_id, wishlist_id);
+        }
 
     }
 }
