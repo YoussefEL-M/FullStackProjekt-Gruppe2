@@ -4,6 +4,7 @@ import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.fullstackprojekt.Repository.WishlistRepo;
 import com.example.fullstackprojekt.Service.WishService;
@@ -23,17 +24,12 @@ public class WishController {
 
     @Autowired
     private WishlistService wishlistService;
+
     @Autowired
     private WishService wishService;
 
     @Autowired
     UserService userService;
-
-    /*@GetMapping("/")
-    public String forside(){
-        return "forside";
-    }*/
-
 
     @GetMapping("/login")
     public String login() {
@@ -43,14 +39,22 @@ public class WishController {
     }
 
     @PostMapping("/loggingIn")
-    public String loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+    public String loggedIn(@RequestParam("username") String username,
+                           @RequestParam("password") String password,
+                           HttpSession session,
+                           RedirectAttributes redirectAttributes) {
 
-        model.addAttribute("username", username);
-        model.addAttribute("password", password);
-
-
-
-        return "loggedIn";
+        // Perform authentication
+        User user = userService.getUserByUsernameAndPassword(username, password);
+        if (user != null) {
+            // Store authenticated user in session
+            session.setAttribute("user", user);
+            return "redirect:/forside";
+        } else {
+            // Authentication failed, redirect back to login page with error message
+            redirectAttributes.addFlashAttribute("error", "Invalid username or password");
+            return "redirect:/login";
+        }
 
     }
 
@@ -63,8 +67,15 @@ public class WishController {
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
             @RequestParam("description") String description,
-            @RequestParam("reserved") boolean reserved
+            @RequestParam("reserved") boolean reserved,
+            RedirectAttributes redirectAttributes
     ){
+
+        if(name.isEmpty() || amount <=0 || description.isEmpty()){
+
+            redirectAttributes.addFlashAttribute("error", "Vær venlig og indtast korrekt værdier i inputfelterne");
+            return "redirect:/WishForm";
+        }
 
         Wish newWish = new Wish(name, price, amount, description, reserved);
         wishService.createWish(newWish);
@@ -98,12 +109,12 @@ public class WishController {
     ){
 
         Wish wishToUpdate = wishService.getWishById(id);
-        Wish wish = new Wish(id,name, price, amount, description, reserved);
 
         wishToUpdate.setName(name);
         wishToUpdate.setPrice(price);
         wishToUpdate.setAmount(amount);
         wishToUpdate.setDescription(description);
+        wishToUpdate.setReserved(reserved);
 
         wishService.updateWish(wishToUpdate);
 
@@ -124,16 +135,23 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("brugernavn") String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
+    public String createAnAccount(@RequestParam("brugernavn") String username,
+                                  @RequestParam("adgangskode") String password,
+                                  RedirectAttributes redirectAttributes) {
 
-        redirectAttributes.addAttribute("username", brugernavn);
-        redirectAttributes.addAttribute("password", adgangskode);
 
+        if (username.isEmpty() || password.isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "Please provide a username and password.");
+            return "redirect:/createUser";
+        }
+
+        // Create a new user and save to the database
         User newUser = new User();
-
+        newUser.setUsername(username);
+        newUser.setPassword(password);
         userService.createUser(newUser);
 
-        return "redirect:/wishlist?id="+newUser.getId();
+        return "redirect:/forside";
     }
 
     @GetMapping("/wishlist")

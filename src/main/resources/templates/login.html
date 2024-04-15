@@ -32,20 +32,21 @@
             <p><a href="/">Glemt adgangskode?</a></p>
         </div>
 
+        <div class="error">
+            <!-- Vis error besked hvis authentication fejler -->
+            <p th:if="${param.error}" class="text-danger">Invalid username or password</p>
+        </div>
+
 
         <!--<div class="buttons"> -->
-            <div class="loginButton">
-                <input type="submit" value="Login">
-            </div>
+        <div class="loginButton">
+            <input type="submit" value="Login">
+        </div>
 
-
-
-
-
-            <!--<div class="aButton">
-                <input type="reset" value="Annuller">
-            </div>
-            -->
+        <!--<div class="aButton">
+            <input type="reset" value="Annuller">
+        </div>
+        -->
 
         <!--</div> -->
 
@@ -53,9 +54,6 @@
             <p>Har du ikke en bruger?</p>
             <p>Opret en bruger <a href="/createUser">her</a></p>
         </div>
-
-
-
 
 
     </form>

@@ -1,10 +1,17 @@
 package com.example.fullstackprojekt.Repository;
 
 import com.example.fullstackprojekt.Model.User;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,8 +19,12 @@ import java.util.List;
 @Repository
 public class UserRepo {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserRepo.class);
+
    @Autowired
     private JdbcTemplate jdbcTemplate;
+
+
 
     public List<User> getAllUsers() {
         String sql = "SELECT * FROM users";
@@ -23,7 +34,16 @@ public class UserRepo {
 
     public void createUser(User user) {
         String sql = "INSERT INTO users (name, username, password) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword());
+        try {
+            int rowsAffected = jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword());
+            if (rowsAffected > 0) {
+                logger.info("User created successfully: {}", user.getUsername());
+            } else {
+                logger.error("Failed to create user: {}", user.getUsername());
+            }
+        } catch (DataAccessException e) {
+            logger.error("Error creating user: {}", user.getUsername(), e);
+        }
     }
 
     public void updateUser(User user) {
