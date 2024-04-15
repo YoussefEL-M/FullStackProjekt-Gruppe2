@@ -2,6 +2,11 @@ package com.example.fullstackprojekt.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.UUID;
 
 @Entity
@@ -14,12 +19,13 @@ public class Wish {
     private int amount;
     private String description;
     private String url;
+    private boolean reserved;
 
     public Wish() {
 
     }
 
-    public Wish(int id, String name, double price, int amount, String description) {
+    public Wish(int id, String name, double price, int amount, String description, boolean reserved) {
 
         this.id = id;
         this.name = name;
@@ -27,14 +33,16 @@ public class Wish {
         this.amount = amount;
         this.description = description;
         this.url = generateUniqueURL();
+        this.reserved = reserved;
     }
 
-    public Wish(String name, double price, int amount, String description) {
+    public Wish(String name, double price, int amount, String description, boolean reserved) {
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
         this.url = generateUniqueURL();
+        this.reserved = reserved;
     }
 
     public int getId() {
@@ -83,6 +91,14 @@ public class Wish {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isReserved() {
+        return reserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved;
     }
 
     private String generateUniqueURL() {

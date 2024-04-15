@@ -49,8 +49,14 @@ public class UserRepo {
     }
 
     public User getUserByUsernameAndPassword(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM users WHERE username = ? AND ´password´ = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, username, password);
+    }
+
+    public void showReservation(int id, boolean owner) {
+
+
+
     }
 }

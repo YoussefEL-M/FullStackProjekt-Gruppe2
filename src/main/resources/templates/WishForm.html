@@ -8,7 +8,9 @@
 <body>
 <div class="createWishForm">
   <h2>Opret et nyt ønske</h2>
+
   <form action="/createWish" method="post" id="wishForm">
+
     <label for="name-field">Navn på ønske:</label>
     <input  id="name-field" name="name" type="text" required><br>
 
@@ -22,7 +24,7 @@
     <textarea id="description" name="description" rows="4" required></textarea><br>
 
     <label for="url-field">URL:</label>
-    <input id="url-field" name="url" type="text" readonly>
+    <input id="url-field" name="url" type="text" >
 
     <button type="submit" value="Opret ønske">Submit</button>
   </form>
