@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater ønske</title>
+    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}">
+</head>
+<body>
+<div class="updateForm">
+    <form action="/updateWish" method="post">
+
+        <input name="id" type="number" hidden th:value="${Wish.id}">
+
+        <label for="name-field">Navn på ønske:</label>
+        <input id="name-field" name="name" type="text" th:value="${Wish.name}">
+
+        <label for="price-field">Pris:</label>
+        <input id="price-field" name="price" type="number" th:value="${Wish.price}">
+
+        <label for="amount-field">Antal ønsket:</label>
+        <input id="amount-field" name="amount" type="number" th:value="${Wish.amount}">
+
+        <label for="description-field">Beskrivelse:</label>
+        <textarea id="description-field" name="description" rows="4" th:value="${Wish.description}"></textarea><br>
+
+        <label for="url-field">URL:</label>
+        <input id="url-field" name="url" type="text" th:value="${Wish.url}" >
+
+        <input type="submit" value="Opret ønske">
+
+    </form>
+</div>
+
+</body>
+</html>

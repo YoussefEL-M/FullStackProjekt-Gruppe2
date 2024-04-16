@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.container-frontpage {
+    text-align: center;
+}
+
+header {
+    background: linear-gradient(to right, lightskyblue, steelblue);
+    color: #fff;
+    padding: 10px 0;
+}
+
+.logo img {
+    height: 100px;
+    margin-left: 20px;
+}
+
+.login-button button {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button button:hover {
+    background-color: #fff;
+    color: #814CBB;
+}
+
+.main-content {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #814CBB;
+    color: #000000;
+}
+
+.create {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.createWishForm label{
+    color: black;
+}
+
+.createWishForm {
+    color: #000000;
+}
+
+
+.create a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: linear-gradient(to right, lightskyblue, steelblue);
+    color: #fff;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-form, .newsletter-form {
+    width: 48%;
+}
+
+.contact-form h2, .newsletter-form h2 {
+    color: #fff;
+}
+
+form {
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #814CBB;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #5E338E;
+}
