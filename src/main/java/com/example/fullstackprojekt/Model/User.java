@@ -17,11 +17,6 @@ public class User {
 
     public User() {
     }
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-
-    }
 
     public User(int id, String name, String username, String password, boolean owner) {
         this.id = id;
@@ -30,8 +25,6 @@ public class User {
         this.password = password;
         this.owner = owner;
     }
-
-
 
     public boolean isOwner() {
         return owner;
