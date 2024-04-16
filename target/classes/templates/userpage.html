@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ønskelisten</title>
+    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}" >
+    <link rel="stylesheet" href="/CSS/wishlist.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="/Images/WishLogo.png" th:src="@{/Images/WishLogo.png}" alt="Logo">
+        </div>
+        <div class="login-button">
+            <a th:href="@{/login}"> <button>Login </button></a>
+        </div>
+    </div>
+</header>
+
+<div class="main-content">
+
+    <a th:href="@{'/'+${link}}"> <button>Din ønskeliste </button></a>
+</div>
+
+
+
+<footer>
+    <div class="container">
+        <div class="contact-form">
+            <h2>Kontakt os</h2>
+            <form>
+                <label for="name">Navn:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Besked:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Indsend</button>
+
+            </form>
+        </div>
+        <div class="newsletter-form">
+            <h2>Skriv dig up til vores nyhedsbrev!</h2>
+            <form>
+                <label for="newsletter-email">E-mail:</label>
+                <input type="email" id="newsletter-email" name="newsletter-email" required>
+                <button type="submit">Abonner</button>
+            </form>
+        </div>
+
+    </div>
+</footer>
+</body>
+</html>
