@@ -32,4 +32,10 @@ public class UserService {
     public void deleteUserById(int id) {
         userRepository.deleteUserById(id);
     }
+    public User getUserByUsername(String name){
+        return userRepository.getUserByUsername(name);
+    }
+    public User getUserByNameAndPassword(String name, String password){
+        return userRepository.getUserByUsernameAndPassword(name, password);
+    }
 }

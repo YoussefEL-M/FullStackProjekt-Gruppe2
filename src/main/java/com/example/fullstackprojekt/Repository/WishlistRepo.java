@@ -19,6 +19,11 @@ public class WishlistRepo {
         RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
         return jdbcTemplate.query(sql, rowMapper, user_id);
     }
+    public Wishlist getWishlistById(int id){
+        String sql = "SELECT * FROM wishlists WHERE id = ?";
+        RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
+        return jdbcTemplate.queryForObject(sql, rowMapper, id);
+    }
 
     public void updateName(String name){
 
