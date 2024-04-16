@@ -4,31 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a96286b-dab6-48c8-b9f9-d6ce6231b523" name="Changes" comment="Brugere gemmes i den nye main.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/CSS/wishform.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/sql/WishbaseForYoussef.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_04_2024_14_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_04_2024_14_12__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_10_39__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_10_39__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_10_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_04_2024_10_51__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Controller/WishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Controller/WishController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Model/Wish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Model/Wish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Repository/WishRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Repository/WishRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/sql/Wish.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/sql/Wish.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/WishForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/WishForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/wishUpdateForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/wishUpdateForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Controller/WishController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Controller/WishController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Model/Wish.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Model/Wish.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Repository/WishRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Repository/WishRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/fullstackprojekt/Service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/sql/Wish.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/sql/Wish.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/WishForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/WishForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/forside.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/forside.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/wishlist.html" afterDir="false" />
-    </list>
+    <list default="true" id="8a96286b-dab6-48c8-b9f9-d6ce6231b523" name="Changes" comment="Opdateret create metoderne så de nu laver noget i databasen. De viser dog stadig ikke noget på siden. Ukommenteret noget i wishlist.html, og tilføjet tabel i stedet(nemmere at arbejde med)." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,7 +107,7 @@
       <workItem from="1712905744527" duration="9894000" />
       <workItem from="1713163915473" duration="6255000" />
       <workItem from="1713251272364" duration="4085000" />
-      <workItem from="1713260722734" duration="9482000" />
+      <workItem from="1713260722734" duration="10123000" />
     </task>
     <task id="LOCAL-00001" summary="sql">
       <option name="closed" value="true" />
@@ -213,7 +189,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713256233352</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Opdateret create metoderne så de nu laver noget i databasen. De viser dog stadig ikke noget på siden. Ukommenteret noget i wishlist.html, og tilføjet tabel i stedet(nemmere at arbejde med).">
+      <option name="closed" value="true" />
+      <created>1713271959537</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713271959537</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Opdateret create metoderne så de nu laver noget i databasen. De viser dog stadig ikke noget på siden. Ukommenteret noget i wishlist.html, og tilføjet tabel i stedet(nemmere at arbejde med).">
+      <option name="closed" value="true" />
+      <created>1713271964022</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713271964022</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +240,7 @@
     <MESSAGE value="brugere oprettes i database" />
     <MESSAGE value="." />
     <MESSAGE value="Brugere gemmes i den nye main." />
-    <option name="LAST_COMMIT_MESSAGE" value="Brugere gemmes i den nye main." />
+    <MESSAGE value="Opdateret create metoderne så de nu laver noget i databasen. De viser dog stadig ikke noget på siden. Ukommenteret noget i wishlist.html, og tilføjet tabel i stedet(nemmere at arbejde med)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Opdateret create metoderne så de nu laver noget i databasen. De viser dog stadig ikke noget på siden. Ukommenteret noget i wishlist.html, og tilføjet tabel i stedet(nemmere at arbejde med)." />
   </component>
 </project>
