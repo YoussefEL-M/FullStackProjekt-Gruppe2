@@ -131,7 +131,7 @@ public class WishController {
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        User newUser = new User(brugernavn, brugernavn, adgangskode);
+        User newUser = new User(brugernavn, adgangskode);
         userService.createUser(newUser);
 
         return "redirect:/login";

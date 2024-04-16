@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a96286b-dab6-48c8-b9f9-d6ce6231b523" name="Changes" comment="Brugere gemmes i den nye main." />
+    <list default="true" id="8a96286b-dab6-48c8-b9f9-d6ce6231b523" name="Changes" comment="Brugere gemmes i den nye main.">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d78e3562-e99f-46d2-ad3a-7f74be93a5b5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d78e3562-e99f-46d2-ad3a-7f74be93a5b5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10-04-2024_11_13__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10-04-2024_11_13__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10-04-2024_11_17__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10-04-2024_11_17__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Controller/WishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Controller/WishController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Repository/WishRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Repository/WishRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Service/WishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/fullstackprojekt/Service/WishService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Clara-3.0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,7 +44,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -57,7 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.FullStackProjektApplication.executor": "Run",
-    "git-widget-placeholder": "Clara-3.0",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/bjark/OneDrive/Dat/Programmering/FullStackProjekt-Gruppe2/src",
     "node.js.detected.package.eslint": "true",
@@ -189,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713256233352</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Ændringer i controller?">
+      <option name="closed" value="true" />
+      <created>1713267629415</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1713267629415</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +241,7 @@
     <MESSAGE value="brugere oprettes i database" />
     <MESSAGE value="." />
     <MESSAGE value="Brugere gemmes i den nye main." />
-    <option name="LAST_COMMIT_MESSAGE" value="Brugere gemmes i den nye main." />
+    <MESSAGE value="Ændringer i controller?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ændringer i controller?" />
   </component>
 </project>

@@ -36,6 +36,4 @@ public class WishService {
         return wishRepository.getWishById(id);
     }
 
-    public List<Wish> showReservations(int user_id, int wishlist_id, boolean owner, boolean reserved)
-    {return wishRepository.showReservation(user_id, wishlist_id, owner, reserved);}
 }
