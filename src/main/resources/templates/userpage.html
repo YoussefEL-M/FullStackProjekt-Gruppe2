@@ -19,10 +19,7 @@
 </header>
 
 <div class="main-content">
-    <div class="container-frontpage">
-        <h1>Velkommen til Danmarks bedste ønskeliste!</h1>
-        <p> Det er her du kan oprette og håndtere din egen ønskeliste!</p>
-    </div>
+    <a th:href="@{'/'+${link}}"> <button th:text="${link}">Din ønskeliste </button></a>
 </div>
 
 
