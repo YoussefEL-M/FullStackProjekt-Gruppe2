@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a96286b-dab6-48c8-b9f9-d6ce6231b523" name="Changes" comment="Brugere gemmes i den nye main.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/sql/Wish.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/sql/Wish.sql" afterDir="false" />
-    </list>
+    <list default="true" id="8a96286b-dab6-48c8-b9f9-d6ce6231b523" name="Changes" comment="Brugere gemmes i den nye main." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,6 +43,7 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2etnOUJnKLFVk26HDEnViDizSP0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -59,7 +57,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.FullStackProjektApplication.executor": "Run",
-    "git-widget-placeholder": "bjarke",
+    "git-widget-placeholder": "Clara-3.0",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/bjark/OneDrive/Dat/Programmering/FullStackProjekt-Gruppe2/src",
     "node.js.detected.package.eslint": "true",
@@ -93,6 +91,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
