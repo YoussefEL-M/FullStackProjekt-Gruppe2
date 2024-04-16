@@ -35,4 +35,5 @@ public class WishService {
     public Wish getWishById(int id) {
         return wishRepository.getWishById(id);
     }
+
 }

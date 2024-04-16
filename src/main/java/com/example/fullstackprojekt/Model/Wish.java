@@ -2,6 +2,8 @@ package com.example.fullstackprojekt.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
@@ -20,29 +22,33 @@ public class Wish {
     private String description;
     private String url;
     private boolean reserved;
+    private int user_id;
 
-    public Wish() {
+    @ManyToOne
+    @JoinColumn(name = "wishlist_id")
+    private Wishlist wishlist;
+
+    public Wish(){
 
     }
 
-    public Wish(int id, String name, double price, int amount, String description, boolean reserved) {
+    public Wish(int id, String name, double price, int amount, String description, boolean reserved, String url) {
 
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
-        this.url = generateUniqueURL();
+        this.url=url;
         this.reserved = reserved;
     }
 
-    public Wish(String name, double price, int amount, String description, boolean reserved) {
+    public Wish(String name, double price, int amount, String description, String url) {
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
-        this.url = generateUniqueURL();
-        this.reserved = reserved;
+        this.url=url;
     }
 
     public int getId() {
@@ -101,8 +107,21 @@ public class Wish {
         this.reserved = reserved;
     }
 
-    private String generateUniqueURL() {
-        UUID uuid = UUID.randomUUID();
-        return uuid.toString();
+
+    public int getUser_id() {
+        return user_id;
     }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setWishlist(Wishlist wishlist) {
+        this.wishlist = wishlist;
+    }
+
+    public Wishlist getWishlist() {
+        return wishlist;
+    }
+
 }

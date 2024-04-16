@@ -3,6 +3,8 @@ package com.example.fullstackprojekt.Service;
 import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

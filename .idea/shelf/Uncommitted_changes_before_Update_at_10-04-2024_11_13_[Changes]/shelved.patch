@@ -1,0 +1,158 @@
+Index: src/main/java/com/example/fullstackprojekt/Model/Wish.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.fullstackprojekt.Model;\r\n\r\nimport jakarta.persistence.Entity;\r\nimport jakarta.persistence.Id;\r\n\r\n@Entity\r\npublic class Wish {\r\n\r\n    @Id\r\n    private int id;\r\n    private String name;\r\n    private double price;\r\n    private int amount;\r\n    private String description;\r\n    private String url;\r\n\r\n    public Wish() {\r\n\r\n    }\r\n\r\n    public Wish(int id, String name, double price, int amount, String description, String url) {\r\n\r\n        this.id = id;\r\n        this.name = name;\r\n        this.price = price;\r\n        this.amount = amount;\r\n        this.description = description;\r\n        this.url = url;\r\n\r\n    }\r\n\r\n    public int getId() {\r\n        return id;\r\n    }\r\n\r\n    public void setId(int id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public double getPrice() {\r\n        return price;\r\n    }\r\n\r\n    public void setPrice(double price) {\r\n        this.price = price;\r\n    }\r\n\r\n    public int getAmount() {\r\n        return amount;\r\n    }\r\n\r\n    public void setAmount(int amount) {\r\n        this.amount = amount;\r\n    }\r\n\r\n    public String getDescription() {\r\n        return description;\r\n    }\r\n\r\n    public void setDescription(String description) {\r\n        this.description = description;\r\n    }\r\n\r\n    public String getUrl() {\r\n        return url;\r\n    }\r\n\r\n    public void setUrl(String url) {\r\n        this.url = url;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/fullstackprojekt/Model/Wish.java b/src/main/java/com/example/fullstackprojekt/Model/Wish.java
+--- a/src/main/java/com/example/fullstackprojekt/Model/Wish.java	(revision 4e1cfb8cb415ab45d7de589f2131bf64ffcb24f4)
++++ b/src/main/java/com/example/fullstackprojekt/Model/Wish.java	(date 1712740410742)
+@@ -1,12 +1,12 @@
+ package com.example.fullstackprojekt.Model;
+ 
+-import jakarta.persistence.Entity;
+-import jakarta.persistence.Id;
++//import jakarta.persistence.Entity;
++//import jakarta.persistence.Id;
+ 
+-@Entity
++//@Entity
+ public class Wish {
+ 
+-    @Id
++    //@Id
+     private int id;
+     private String name;
+     private double price;
+Index: src/main/java/com/example/fullstackprojekt/Model/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.fullstackprojekt.Model;\r\n\r\nimport jakarta.persistence.Id;\r\nimport jakarta.persistence.Entity;\r\n\r\n@Entity\r\npublic class User {\r\n\r\n\r\n    @Id\r\n    private int id;\r\n    private String name;\r\n    private String username;\r\n    private String password;\r\n\r\n\r\n    public User() {\r\n    }\r\n\r\n    public String getName() {\r\n        return name;\r\n    }\r\n\r\n    public void setName(String name) {\r\n        this.name = name;\r\n    }\r\n\r\n    public String getUsername() {\r\n        return username;\r\n    }\r\n\r\n    public void setUsername(String username) {\r\n        this.username = username;\r\n    }\r\n\r\n    public String getPassword() {\r\n        return password;\r\n    }\r\n\r\n    public void setPassword(String password) {\r\n        this.password = password;\r\n    }\r\n\r\n    public void setId(int id) {\r\n        this.id = id;\r\n    }\r\n\r\n    public int getId() {\r\n        return id;\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/fullstackprojekt/Model/User.java b/src/main/java/com/example/fullstackprojekt/Model/User.java
+--- a/src/main/java/com/example/fullstackprojekt/Model/User.java	(revision 4e1cfb8cb415ab45d7de589f2131bf64ffcb24f4)
++++ b/src/main/java/com/example/fullstackprojekt/Model/User.java	(date 1712740410752)
+@@ -1,13 +1,13 @@
+ package com.example.fullstackprojekt.Model;
+ 
+-import jakarta.persistence.Id;
+-import jakarta.persistence.Entity;
++//import jakarta.persistence.Id;
++//import jakarta.persistence.Entity;
+ 
+-@Entity
++//@Entity
+ public class User {
+ 
+ 
+-    @Id
++    //@Id
+     private int id;
+     private String name;
+     private String username;
+Index: src/main/resources/templates/forside.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Title</title>\r\n</head>\r\n<body>\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/forside.html b/src/main/resources/templates/forside.html
+--- a/src/main/resources/templates/forside.html	(revision 4e1cfb8cb415ab45d7de589f2131bf64ffcb24f4)
++++ b/src/main/resources/templates/forside.html	(date 1712740046530)
+@@ -1,10 +1,52 @@
+ <!DOCTYPE html>
+-<html lang="en">
++<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>Title</title>
++    <title>Ønsketitel</title>
++    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}">
+ </head>
+ <body>
++<header>
++    <div class="container">
++        <div class="logo">
++            <img src="logo.png" alt="Logo">
++        </div>
++        <div class="login-button">
++            <button>Login</button>
++        </div>
++    </div>
++</header>
+ 
++<div class="main-content">
++    <div class="container">
++        <h1>Velkommen til Danmarks bedste ønskeliste!</h1>
++        <p> Det er her du opretter du kan oprette og håndtere din egen ønskeliste!</p>
++    </div>
++</div>
++
++<footer>
++    <div class="container">
++        <div class="contact-form">
++            <h2>Contact Us</h2>
++            <form>
++                <label for="name">Navn:</label>
++                <input type="text" id="name" name="name" required>
++                <label for="email">E-mail:</label>
++                <input type="email" id="email" name="email" required>
++                <label for="message">Besked:</label>
++                <textarea id="message" name="message" required></textarea>
++                <button type="submit">Indsend</button>
++            </form>
++        </div>
++        <div class="newsletter-form">
++            <h2>Skriv dig up til vores nyhedsbrev!</h2>
++            <form>
++                <label for="newsletter-email">E-mail:</label>
++                <input type="email" id="newsletter-email" name="newsletter-email" required>
++                <button type="submit">Abonner</button>
++            </form>
++        </div>
++    </div>
++</footer>
+ </body>
+ </html>
+\ No newline at end of file
+Index: src/main/java/com/example/fullstackprojekt/Controller/Controller.java
+===================================================================
+diff --git a/src/main/java/com/example/fullstackprojekt/Controller/Controller.java b/src/main/java/com/example/fullstackprojekt/Controller/Controller.java
+deleted file mode 100644
+--- a/src/main/java/com/example/fullstackprojekt/Controller/Controller.java	(revision 4e1cfb8cb415ab45d7de589f2131bf64ffcb24f4)
++++ /dev/null	(revision 4e1cfb8cb415ab45d7de589f2131bf64ffcb24f4)
+@@ -1,4 +0,0 @@
+-package com.example.fullstackprojekt.Controller;
+-
+-public class Controller {
+-}
+Index: src/main/java/com/example/fullstackprojekt/Controller/WishController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/fullstackprojekt/Controller/WishController.java b/src/main/java/com/example/fullstackprojekt/Controller/WishController.java
+new file mode 100644
+--- /dev/null	(date 1712740023791)
++++ b/src/main/java/com/example/fullstackprojekt/Controller/WishController.java	(date 1712740023791)
+@@ -0,0 +1,16 @@
++package com.example.fullstackprojekt.Controller;
++
++import org.springframework.stereotype.Controller;
++import org.springframework.web.bind.annotation.GetMapping;
++
++
++@Controller
++public class WishController {
++
++    @GetMapping("/")
++    public String index() {
++
++        return "forside";
++    }
++
++}
