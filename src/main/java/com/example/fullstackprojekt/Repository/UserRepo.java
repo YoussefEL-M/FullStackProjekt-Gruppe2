@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class UserRepo {
 
-   @Autowired
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public List<User> getAllUsers() {
