@@ -54,9 +54,4 @@ public class UserRepo {
         return jdbcTemplate.queryForObject(sql, rowMapper, username, password);
     }
 
-    public void showReservation(int id, boolean owner) {
-
-
-
-    }
 }

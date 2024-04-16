@@ -1,5 +1,8 @@
 package com.example.fullstackprojekt.Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import jakarta.persistence.*;
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.Id;
@@ -19,6 +22,7 @@ public class Wish {
     private String description;
     private String url;
     private boolean reserved;
+    private int user_id;
 
     @ManyToOne
     @JoinColumn(name = "wishlist_id")
@@ -28,13 +32,15 @@ public class Wish {
 
     }
 
-    public Wish(int id, String name, double price, int amount, String description) {
+    public Wish(int id, String name, double price, int amount, String description, boolean reserved, String url) {
 
         this.id = id;
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
+        this.url=url;
+        this.reserved = reserved;
     }
 
     public Wish(String name, double price, int amount, String description, String url) {
@@ -99,6 +105,15 @@ public class Wish {
 
     public void setReserved(boolean reserved) {
         this.reserved = reserved;
+    }
+
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public void setWishlist(Wishlist wishlist) {

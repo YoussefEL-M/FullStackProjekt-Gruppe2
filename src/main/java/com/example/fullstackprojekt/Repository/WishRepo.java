@@ -47,4 +47,5 @@ public class WishRepo {
         String sql = "UPDATE wishes SET name = ?, price = ?, amount = ?, description = ?, url = ? WHERE id = ?";
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getId());
     }
+
 }

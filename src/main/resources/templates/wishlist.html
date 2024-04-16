@@ -18,7 +18,10 @@
     </div>
 </header>
 
+<h1>Velkommen tilbage <span th:text="${username}"></span></h1>
+
 <!--<div class="wish-container">
+<div class="wish-container">
     <div class="wish-item" th:each="wish : ${wishlist}">
         <a th:href="@{${wish.url}}"><h4 th:text="${wish.name + ' (' + wish.amount + ')' + ' - ' + wish.price} + ' kr.'">Wish name.</h4></a>
         <p th:text="${wish.description}">Description.</p>
