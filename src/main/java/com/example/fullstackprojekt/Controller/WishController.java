@@ -4,6 +4,7 @@ import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.fullstackprojekt.Repository.WishlistRepo;
 import com.example.fullstackprojekt.Service.WishService;
@@ -42,18 +43,17 @@ public class WishController {
 
     }
 
-    @PostMapping("/loggedIn")
-    public String loggedIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
+    @PostMapping("/loggingIn")
+    public String loggingIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model, HttpSession session) {
 
-        model.addAttribute("username", username);
-        model.addAttribute("password", password);
-
-
-
-        return "redirect:/wishlist";
+        User user = userService.getUserByUsername(username);
+        if(user.getPassword().equals(password)) {
+            session.setAttribute("User", user);
+            return "forside";
+        }
+        else return "denied";
 
     }
-
 
     @GetMapping("/WishForm")
     public String create(){return "WishForm";}
@@ -131,15 +131,20 @@ public class WishController {
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        User user = new User(brugernavn, adgangskode);
-        userService.createUser(user);
+        User newUser = new User(brugernavn, brugernavn, adgangskode);
+        userService.createUser(newUser);
 
         return "redirect:/login";
     }
 
     @GetMapping("/wishlist")
-    public String wishlist(@RequestParam("id") int id, Model model){
+    public String wishlist(@RequestParam("id") int id, Model model, HttpSession session){
+        model.addAttribute("wishlistObject", wishlistService.getWishlistById(id));
         model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
-        return "wishlist";
+        User user = (User) session.getAttribute("User");
+        if(user.getId() == wishlistService.getWishlistById(id).getUserId()){
+            return "wishlist";
+        }
+        else return "denied";
     }
 }

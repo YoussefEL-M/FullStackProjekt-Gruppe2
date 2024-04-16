@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class UserRepo {
 
-   @Autowired
+    @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public List<User> getAllUsers() {
@@ -49,7 +49,7 @@ public class UserRepo {
     }
 
     public User getUserByUsernameAndPassword(String username, String password) {
-        String sql = "SELECT * FROM users WHERE username = ? AND ´password´ = ?";
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, username, password);
     }
