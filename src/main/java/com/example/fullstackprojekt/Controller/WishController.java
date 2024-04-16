@@ -48,6 +48,8 @@ public class WishController {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
+
+
         return "redirect:/wishlist";
 
     }

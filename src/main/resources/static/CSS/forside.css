@@ -17,7 +17,7 @@ body {
 }
 
 header {
-    background-color: #814CBB;
+    background:linear-gradient(to right, lightskyblue, steelblue);
     color: #fff;
     padding: 10px 0;
 }
@@ -38,7 +38,7 @@ header {
 
 .login-button button:hover {
     background-color: #fff;
-    color: #814CBB;
+    background:linear-gradient(to right, lightskyblue, steelblue);
 }
 
 .main-content {
@@ -48,12 +48,56 @@ header {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h1, h2, h3{
     color: #333;
 }
 
 p {
     color: #666;
+    line-height: 30px;
+}
+
+.inspiration {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30%;
+    gap:15px;
+    padding-left: 5%;
+    padding-right:1%;
+
+
+}
+
+.sektion {
+
+    text-align: center;
+}
+
+.inspirationslinks{
+
+
+
+
+
+
+}
+
+.inspirationslinks img {
+
+    height:auto;
+    width:85%;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .inspiration {
+        flex-direction: column;
+        align-items: flex-start;
+
+    }
 }
 
 table {
@@ -69,7 +113,7 @@ th, td {
 }
 
 th {
-    background-color: #814CBB;
+    background:linear-gradient(to right, lightskyblue, steelblue);;
     color: #000000;
 }
 
@@ -92,7 +136,7 @@ th {
 }
 
 footer {
-    background-color: #814CBB;
+    background:linear-gradient(to right, lightskyblue, steelblue);
     color: #fff;
     padding: 20px 0;
     position: absolute;
