@@ -1,32 +1,77 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Opret ønske</title>
-  <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}">
+  <meta charset="UTF-8">
+  <title>Opret ønske</title>
+  <link rel="stylesheet" href="/CSS/wishform.css" th:href="@{/CSS/wishform.css}">
 </head>
 <body>
 <div class="createWishForm">
-  <h2>Opret et nyt ønske</h2>
+  <form action="/createWish" method="post">
+    <h2>Opret et nyt ønske</h2>
 
-  <form action="/createWish" method="post" id="wishForm">
+    <div class="loginFields">
+      <div>
+        <label for="name-field">Navn på ønske:</label>
+      </div>
+      <div>
+        <input type="text" id="name-field" name="name" placeholder="Indtast ønske..." required>
+      </div>
+    </div>
 
-    <label for="name-field">Navn på ønske:</label>
-    <input  id="name-field" name="name" type="text" required><br>
+    <div class="loginFields">
+      <div>
+        <label for="price">Pris:</label>
+      </div>
+      <div>
+        <input type="number" id="price" name="price" placeholder="Indtast pris..." required>
+      </div>
+    </div>
 
-    <label for="price">Pris:</label>
-    <input id="price" name="price" type="number" required><br>
+    <div class="loginFields">
+      <div>
+        <label for="amount">Antal ønsket:</label>
+      </div>
+      <div>
+        <input type="number" id="amount" name="amount" placeholder="Indtast antal..." required>
+      </div>
+    </div>
 
-    <label for="amount">Antal ønsket:</label>
-    <input id="amount" name="amount" type="number" required><br>
+    <div class="loginFields">
+      <div>
+        <label for="description">Beskrivelse:</label>
+      </div>
+      <div>
+        <textarea id="description" name="description" rows="4" placeholder="Indtast beskrivelse..." required></textarea>
+      </div>
+    </div>
 
-    <label for="description">Beskrivelse:</label><br>
-    <textarea id="description" name="description" rows="4" required></textarea><br>
+    <div class="loginFields">
+      <div>
+        <label for="wishlist">Select Wishlist:</label>
+      </div>
+      <div>
+        <select id="wishlist" name="wishlistId">
+          <option value="">Select a wishlist...</option>
+          <option th:each="wishlist : ${wishlists}" th:value="${wishlist.id}" th:text="${wishlist.name}">Wishlist Name</option>
+        </select>
+      </div>
+    </div>
 
-    <label for="url-field">URL:</label>
-    <input id="url-field" name="url" type="text" >
 
-    <button type="submit" value="Opret ønske">Submit</button>
+    <input type="hidden" id="reserved" name="reserved" value="false">
+
+    <div class="loginFields">
+      <div>
+        <label for="url-field">URL:</label>
+      </div>
+      <div>
+        <input id="url-field" name="url" type="text" placeholder="Enter URL...">
+      </div>
+    </div>
+
+
+    <button type="submit" value="Opret ønske">Opret ønske</button>
   </form>
 </div>
 </body>

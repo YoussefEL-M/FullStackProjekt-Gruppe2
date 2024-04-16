@@ -2,22 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ønsketitel</title>
+    <title>Ønskelisten</title>
+    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}" >
     <link rel="stylesheet" href="/CSS/wishlist.css" th:href="@{/CSS/wishlist.css}">
 </head>
 <body>
 <header>
     <div class="container">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="/Images/WishLogo.png" th:src="@{/Images/WishLogo.png}" alt="Logo">
         </div>
         <div class="login-button">
-            <button>Login</button>
+            <a th:href="@{/login}"> <button>Login </button></a>
         </div>
     </div>
 </header>
 
-<div class="wish-container">
+<!--<div class="wish-container">
     <div class="wish-item" th:each="wish : ${wishlist}">
         <a th:href="@{${wish.url}}"><h4 th:text="${wish.name + ' (' + wish.amount + ')' + ' - ' + wish.price} + ' kr.'">Wish name.</h4></a>
         <p th:text="${wish.description}">Description.</p>
@@ -25,7 +26,33 @@
         <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Update wish</a>
         <a th:href="@{'/delete/' + ${wish.id}}" href="wishlist.html">Delete wish</a>
     </div>
-</div>
+</div> -->
+
+<table>
+    <thead>
+    <tr>
+        <th>Navn på ønske</th>
+        <th>Pris</th>
+        <th>Antal ønsket</th>
+        <th>Beskrivelse</th>
+        <th>Billede</th>
+        <th>Opdater ønske</th>
+        <th>Slet ønske</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wish : ${wishlist}">
+        <td th:text="${wish.name}"></td>
+        <td th:text="${wish.price}"></td>
+        <td th:text="${wish.amount}"></td>
+        <td th:text="${wish.description}"></td>
+        <td> <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat."> </td>
+        <td> <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Opdater ønske</a></td>
+        <td> <a th:href="@{'/delete/' + ${wish.id}}" href="forside.html">Slet ønske</a></td>
+    </tr>
+    </tbody>
+</table>
+
 
 <div class="create">
     <h2> Opret nyt ønske</h2>

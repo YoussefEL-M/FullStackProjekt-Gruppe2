@@ -28,8 +28,8 @@ public class WishRepo {
     }
 
     public void createWish(Wish wish) {
-        String sql = "INSERT INTO wishes (name, price, amount, description, url) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl());
+        String sql = "INSERT INTO wishes (name, price, amount, description, url, wishlist_id) VALUES (?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getWishlist());
     }
 
     public void deleteWishById(int id) {

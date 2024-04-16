@@ -2,8 +2,13 @@ package com.example.fullstackprojekt.Controller;
 
 import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
+import com.example.fullstackprojekt.Model.Wishlist;
+import com.example.fullstackprojekt.Model.Wishlist;
+import com.example.fullstackprojekt.Model.User;
+import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.fullstackprojekt.Repository.WishlistRepo;
@@ -30,11 +35,6 @@ public class WishController {
     @Autowired
     UserService userService;
 
-    /*@GetMapping("/")
-    public String forside(){
-        return "forside";
-    }*/
-
 
     @GetMapping("/login")
     public String login() {
@@ -44,7 +44,10 @@ public class WishController {
     }
 
     @PostMapping("/loggingIn")
-    public String loggingIn(@RequestParam("username") String username, @RequestParam("password") String password, Model model, HttpSession session) {
+    public String loggingIn(@RequestParam("username") String username,
+                            @RequestParam("password") String password,
+                            Model model,
+                            HttpSession session) {
 
         User user = userService.getUserByUsername(username);
         if(user.getPassword().equals(password)) {
@@ -56,7 +59,15 @@ public class WishController {
     }
 
     @GetMapping("/WishForm")
-    public String create(){return "WishForm";}
+    public String create(Model model, HttpSession session){
+        User user = (User) session.getAttribute("User");
+        int userId = user.getId();
+
+        List<Wishlist> wishlists = wishlistService.getWishlistsForUser(userId);
+
+        model.addAttribute("wishlists", wishlists);
+        return "WishForm";
+    }
 
     @PostMapping("/createWish")
     public String createWish(
@@ -64,14 +75,14 @@ public class WishController {
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
             @RequestParam("description") String description,
-            @RequestParam("reserved") boolean reserved
-    ){
+            @RequestParam("url") String url,
+            @RequestParam("wishlistId") int wishlistId
+    ) {
+        Wish newWish = new Wish(name, price, amount, description, url);
 
-        Wish newWish = new Wish(name, price, amount, description, reserved);
         wishService.createWish(newWish);
 
-
-        return "redirect:/wishlist?id="+newWish.getId();
+        return "redirect:/wishlist?id=" + wishlistId;
     }
 
     @GetMapping("/")
@@ -94,12 +105,10 @@ public class WishController {
             @RequestParam("name") String name,
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
-            @RequestParam("description") String description,
-            @RequestParam("reserved") boolean reserved
+            @RequestParam("description") String description
     ){
 
         Wish wishToUpdate = wishService.getWishById(id);
-        Wish wish = new Wish(id,name, price, amount, description, reserved);
 
         wishToUpdate.setName(name);
         wishToUpdate.setPrice(price);
@@ -125,7 +134,9 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("brugernavn")String brugernavn, @RequestParam("adgangskode") String adgangskode, RedirectAttributes redirectAttributes) {
+    public String createAnAccount(@RequestParam("brugernavn")String brugernavn,
+                                  @RequestParam("adgangskode") String adgangskode,
+                                  RedirectAttributes redirectAttributes) {
 
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
