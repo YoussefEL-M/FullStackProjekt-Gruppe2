@@ -19,7 +19,7 @@
             </div>
 
         </div>
-        <span id="username_missing" color="red"></span>
+        <span color="red"><p id="username_missing"></p></span>
 
         <div class="loginFields">
             <div>
@@ -29,7 +29,7 @@
                 <input type="password" id="password" name="password" placeholder="Indtast adgangskode..." required>
             </div>
         </div>
-        <span id="password_mismatch" color="red"></span>
+        <span color="red"><p id="password_mismatch"></p></span>
         <div class="glemt">
             <p><a href="/">Glemt adgangskode?</a></p>
         </div>
@@ -66,13 +66,13 @@
 <script th:inline="javascript">
     var usernameMissing = /*[[${usernameMissing}]]*/ false;
     if (usernameMissing===true){
-        document.getElementById("username_missing").innerText="Denne bruger findes ikke.";
+        document.getElementById("username_missing").innerHTML="Denne bruger findes ikke.";
     }
 </script>
 <script th:inline="javascript">
     var passwordMismatch = /*[[${passwordMismatch}]]*/ false;
     if (passwordMismatch===true){
-        document.getElementById("password_mismatch").innerText="Forkert password til denne bruger.";
+        document.getElementById("password_mismatch").innerHTML="Forkert password til denne bruger.";
     }
 </script>
 

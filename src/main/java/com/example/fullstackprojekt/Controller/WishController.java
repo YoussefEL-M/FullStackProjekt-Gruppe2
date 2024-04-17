@@ -56,11 +56,11 @@ public class WishController {
                 return "redirect:/userpage";
             } else {
                 model.addAttribute("passwordMismatch", true);
-                return "redirect:/login";
+                return "login";
             }
         } catch (EmptyResultDataAccessException E){
             model.addAttribute("usernameMissing", true);
-            return "redirect:/login";
+            return "login";
         }
 
     }

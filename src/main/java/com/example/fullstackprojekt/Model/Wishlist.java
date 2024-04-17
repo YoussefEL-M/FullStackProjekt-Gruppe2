@@ -12,6 +12,7 @@ public class Wishlist {
     private int id;
     private int userId;
     private String name;
+
     public Wishlist(int id, int userId, String name){
         this.id = id;
         this.userId=userId;
@@ -20,10 +21,6 @@ public class Wishlist {
 
     public Wishlist() {
 
-    }
-
-    public void setList(List<Wish> list){
-        this.list=list;
     }
 
     public int getUserId(){
