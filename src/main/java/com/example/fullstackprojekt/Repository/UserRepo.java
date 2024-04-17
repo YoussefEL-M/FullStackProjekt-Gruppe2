@@ -2,6 +2,7 @@ package com.example.fullstackprojekt.Repository;
 
 import com.example.fullstackprojekt.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -31,24 +32,24 @@ public class UserRepo {
         jdbcTemplate.update(sql, user.getName(), user.getUsername(), user.getPassword(), user.getId());
     }
 
-    public void deleteUserById(int id) {
+    public void deleteUserById(int id) throws EmptyResultDataAccessException {
         String sql = "DELETE FROM users WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM users WHERE id = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
-    public User getUserByUsername(String username) {
+    public User getUserByUsername(String username) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM users WHERE username = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, username);
     }
 
-    public User getUserByUsernameAndPassword(String username, String password) {
+    public User getUserByUsernameAndPassword(String username, String password) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, username, password);

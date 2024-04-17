@@ -3,6 +3,7 @@ package com.example.fullstackprojekt.Service;
 import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class UserService {
         return userRepository.getAllUsers();
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) throws EmptyResultDataAccessException {
         return userRepository.getUserById(id);
     }
 
@@ -34,10 +35,10 @@ public class UserService {
     public void deleteUserById(int id) {
         userRepository.deleteUserById(id);
     }
-    public User getUserByUsername(String name){
+    public User getUserByUsername(String name) throws EmptyResultDataAccessException{
         return userRepository.getUserByUsername(name);
     }
-    public User getUserByNameAndPassword(String name, String password){
+    public User getUserByNameAndPassword(String name, String password) throws EmptyResultDataAccessException{
         return userRepository.getUserByUsernameAndPassword(name, password);
     }
 }

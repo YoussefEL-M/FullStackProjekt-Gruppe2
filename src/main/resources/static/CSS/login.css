@@ -81,8 +81,11 @@ h1 {
     width:250px;
     background: linear-gradient(to right, lightskyblue, steelblue);
 
-
-
-
 }
 
+#password_mismatch{
+    margin: 0;
+}
+#username_missing{
+    margin: 0;
+}

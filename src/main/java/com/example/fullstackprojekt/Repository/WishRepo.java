@@ -1,6 +1,7 @@
 package com.example.fullstackprojekt.Repository;
 
 import com.example.fullstackprojekt.Model.Wish;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -21,7 +22,7 @@ public class WishRepo {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
-        public List<Wish> getWishesInWishlist(int id) {
+        public List<Wish> getWishesInWishlist(int id) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM wishes WHERE wishlist_id = ?";
         RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
         return jdbcTemplate.query(sql, rowMapper, id);
@@ -32,12 +33,12 @@ public class WishRepo {
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getWishlist_id());
     }
 
-    public void deleteWishById(int id) {
+    public void deleteWishById(int id){
         String sql = "DELETE FROM wishes WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 
-    public Wish getWishById(int id) {
+    public Wish getWishById(int id) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM wishes WHERE id = ?";
         RowMapper<Wish> rowMapper = new BeanPropertyRowMapper<>(Wish.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
