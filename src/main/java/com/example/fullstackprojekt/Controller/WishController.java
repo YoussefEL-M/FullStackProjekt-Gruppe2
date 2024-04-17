@@ -78,9 +78,14 @@ public class WishController {
             @RequestParam("amount") int amount,
             @RequestParam("description") String description,
             @RequestParam("url") String url,
-            @RequestParam("wishlistId") int wishlistId
-    ) {
-        Wish newWish = new Wish(name, price, amount, description, url);
+            @RequestParam("wishlistId") int wishlistId,
+            HttpSession session){
+
+        User user = (User) session.getAttribute("User");
+        int user_id = user.getId();
+
+
+        Wish newWish = new Wish(name, price, amount, description, url, user_id);
 
         wishService.createWish(newWish);
 
@@ -170,14 +175,12 @@ public class WishController {
         } else return "denied";
     }
 
-    @PostMapping("/copyLink")
-    public String copyLink(Model model, HttpSession session){
-        User user = (User) session.getAttribute("User");
-        model.addAttribute("wishlistObject", wishlistService.getWishlistById(user.getId()));
-        model.addAttribute("wishlist", wishService.getWishesInWishlist(user.getId()));
+    @GetMapping("/reserve")
+    public String reserve(@RequestParam("id") int id){
 
+        Wish wishToUpdate = wishService.getWishById(id);
+        wishService.reserveWish(wishToUpdate);
 
-
-        return "wishlist";
+        return "wishlistShare?id="+wishToUpdate.getUser_id();
     }
 }

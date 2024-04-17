@@ -50,7 +50,7 @@
         <td th:text="${wish.amount}"></td>
         <td th:text="${wish.description}"></td>
         <td> <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat."> </td>
-        <td> <a th:href="@{'/'}" href="/">Reserver</a></td>
+        <td> <a th:href="@{'/reserve?id='+${wish.id}}">Reserver</a></td>
 
     </tr>
     </tbody>

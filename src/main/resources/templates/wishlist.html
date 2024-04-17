@@ -59,8 +59,8 @@
         <td th:text="${wish.amount}"></td>
         <td th:text="${wish.description}"></td>
         <td> <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat."> </td>
-        <td> <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Opdater ønske</a></td>
-        <td> <a th:href="@{'/delete/' + ${wish.id}}" href="forside.html">Slet ønske</a></td>
+        <td> <a th:href="@{'/update/' + ${wish.id}}">Opdater ønske</a></td>
+        <td> <a th:href="@{'/delete/' + ${wish.id}}">Slet ønske</a></td>
     </tr>
     </tbody>
 </table>

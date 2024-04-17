@@ -43,12 +43,13 @@ public class Wish {
         this.reserved = reserved;
     }
 
-    public Wish(String name, double price, int amount, String description, String url) {
+    public Wish(String name, double price, int amount, String description, String url, int user_id) {
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
         this.url=url;
+        this.user_id=user_id;
     }
 
     public int getId() {
