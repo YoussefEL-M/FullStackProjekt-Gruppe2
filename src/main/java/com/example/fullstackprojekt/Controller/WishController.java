@@ -52,10 +52,18 @@ public class WishController {
         User user = userService.getUserByUsername(username);
         if(user.getPassword().equals(password)) {
             session.setAttribute("User", user);
-            return "forside";
+            return "redirect:/userpage";
         }
         else return "denied";
 
+    }
+
+    @GetMapping("/userpage")
+    public String userpage(Model model, HttpSession session){
+        User user = (User) session.getAttribute("User");
+        model.addAttribute("link", "wishlist?id="+user.getId());
+
+        return "/userpage";
     }
 
     @GetMapping("/WishForm")
