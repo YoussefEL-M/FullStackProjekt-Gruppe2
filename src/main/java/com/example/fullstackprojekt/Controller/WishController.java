@@ -3,17 +3,21 @@ package com.example.fullstackprojekt.Controller;
 import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Model.Wishlist;
+import com.example.fullstackprojekt.Model.Wishlist;
+import com.example.fullstackprojekt.Model.User;
+import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
-import com.example.fullstackprojekt.Service.WishlistService;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.example.fullstackprojekt.Repository.WishlistRepo;
+import com.example.fullstackprojekt.Service.WishService;
+import com.example.fullstackprojekt.Service.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -26,6 +30,7 @@ public class WishController {
     private WishlistService wishlistService;
     @Autowired
     private WishService wishService;
+
     @Autowired
     UserService userService;
 
@@ -81,12 +86,12 @@ public class WishController {
             @RequestParam("wishlistId") int wishlistId,
             HttpSession session){
 
-        User user = (User) session.getAttribute("User");
-        int user_id = user.getId();
 
+    User user = (User) session.getAttribute("User");
 
+            int user_id = user.getId();
         Wish newWish = new Wish(name, price, amount, description, url, user_id);
-
+        newWish.setWishlist_id(wishlistId);
         wishService.createWish(newWish);
 
         return "redirect:/wishlist?id=" + wishlistId;
@@ -155,14 +160,22 @@ public class WishController {
     }
 
     @GetMapping("/wishlist")
-    public String wishlist(@RequestParam("id") int id, Model model, HttpSession session){
-        model.addAttribute("wishlistObject", wishlistService.getWishlistById(id));
-        model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+    public String wishlist(Model model, HttpSession session){
         User user = (User) session.getAttribute("User");
-        if(user.getId() == wishlistService.getWishlistById(id).getUserId()){
-            return "wishlist";
+        if(user != null) {
+            int userId = user.getId();
+            Wishlist wishlist = wishlistService.getWishlistById(userId);
+            if(wishlist != null) {
+                model.addAttribute("wishlistObject", wishlist);
+                model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                return "wishlist";
+            } else {
+                return "denied";
+            }
+        } else {
+            return "login";
         }
-        else return "denied";
+
     }
 
     @GetMapping("/wishlistshare")

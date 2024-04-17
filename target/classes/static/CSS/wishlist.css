@@ -33,9 +33,9 @@ tr:hover {
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9; /* Light gray background */
-    min-height: 100vh; /* Set minimum height of body to viewport height */
-    position: relative; /* Set body position to relative */
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    position: relative;
 }
 
 .container {
@@ -67,31 +67,31 @@ header {
 
 .login-button {
     float: right;
-    margin-right: 20px; /* Added some margin */
+    margin-right: 20px;
 }
 
 .main-content {
-    background-color: #fff; /* White background */
+    background-color: #fff;
     padding: 20px;
-    margin-top: 20px; /* Added margin from the header */
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Added shadow for depth */
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
 }
 
 h1 {
-    color: #333; /* Dark text color */
+    color: #333;
 }
 
 p {
-    color: #666; /* Slightly lighter text color */
+    color: #666;
 }
 
 footer {
-    background-color: #814CBB; /* Dark background for footer */
-    color: #fff; /* White text */
+    background-color: #814CBB;
+    color: #fff;
     padding: 20px 0;
-    position: absolute; /* Set footer position to absolute */
-    bottom: 0; /* Position footer at the bottom */
-    width: 100%; /* Set footer width to full width */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .contact-form, .newsletter-form {
@@ -101,7 +101,7 @@ footer {
 }
 
 .contact-form h2, .newsletter-form h2 {
-    color: #fff; /* White text for form headings */
+    color: #fff;
 }
 
 form {
@@ -111,7 +111,7 @@ form {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #fff; /* White text for labels */
+    color: #fff;
 }
 
 input[type="text"],
@@ -120,21 +120,21 @@ textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc; /* Gray border for inputs */
-    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
     padding: 10px 20px;
-    background-color: grey; /* Set button background color */
-    color: #fff; /* White text */
+    background-color: grey;
+    color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
 }
 
 button:hover {
-    background-color: #555; /* Darken button on hover */
+    background-color: #555;
 }
 
 .wish-container{

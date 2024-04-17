@@ -1,8 +1,7 @@
 body{
-    background: linear-gradient(to right, cornflowerblue 10%, blueviolet 30%, mediumpurple 60%, rebeccapurple 100%)
+    background: linear-gradient(to right, lightskyblue, steelblue);
 }
 
-/* wishform.css */
 .createWishForm form {
     justify-items: center;
     justify-content: space-around;
@@ -38,18 +37,18 @@ body{
     border-radius: 15px;
     padding: 4px;
     width: 250px;
-    background: linear-gradient(to right, cornflowerblue 10%, blueviolet 30%, mediumpurple 60%, rebeccapurple 100%);
+    background: linear-gradient(to right, lightskyblue, steelblue);
 }
 .createWishForm input[type="text"],
 .createWishForm input[type="number"],
 .createWishForm textarea {
     width: calc(100% - 15px);
     border: none;
-    background-color: rgba(255, 255, 255, 0.8); /* Change background color to white */
+    background-color: rgba(255, 255, 255, 0.8);
     margin-top: 10px;
-    padding: 8px; /* Add some padding for better visibility */
-    border-radius: 5px; /* Add border-radius for a softer look */
-    color: #333; /* Set text color to dark */
+    padding: 8px;
+    border-radius: 5px;
+    color: #333;
 }
 
 h2 {

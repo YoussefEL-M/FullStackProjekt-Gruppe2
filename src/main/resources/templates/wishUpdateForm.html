@@ -6,30 +6,59 @@
     <link rel="stylesheet" href="/CSS/wishform.css" th:href="@{/CSS/wishform.css}">
 </head>
 <body>
-<div class="updateForm">
+<div class="createWishForm">
     <form action="/updateWish" method="post">
+        <h2>Opdater ønske</h2>
 
         <input name="id" type="number" hidden th:value="${Wish.id}">
 
-        <label for="name-field">Navn på ønske:</label>
-        <input id="name-field" name="name" type="text" th:value="${Wish.name}">
+        <div class="loginFields">
+            <div>
+                <label for="name-field">Navn på ønske:</label>
+            </div>
+            <div>
+                <input id="name-field" name="name" type="text" th:value="${Wish.name}">
+            </div>
+        </div>
 
-        <label for="price-field">Pris:</label>
-        <input id="price-field" name="price" type="number" th:value="${Wish.price}">
+        <div class="loginFields">
+            <div>
+                <label for="price-field">Pris:</label>
+            </div>
+            <div>
+                <input id="price-field" name="price" type="number" th:value="${Wish.price}">
+            </div>
+        </div>
 
-        <label for="amount-field">Antal ønsket:</label>
-        <input id="amount-field" name="amount" type="number" th:value="${Wish.amount}">
+        <div class="loginFields">
+            <div>
+                <label for="amount-field">Antal ønsket:</label>
+            </div>
+            <div>
+                <input id="amount-field" name="amount" type="number" th:value="${Wish.amount}">
+            </div>
+        </div>
 
-        <label for="description-field">Beskrivelse:</label>
-        <textarea id="description-field" name="description" rows="4" th:value="${Wish.description}"></textarea><br>
+        <div class="loginFields">
+            <div>
+                <label for="description-field">Beskrivelse:</label>
+            </div>
+            <div>
+                <textarea id="description-field" name="description" rows="4" th:value="${Wish.description}"></textarea>
+            </div>
+        </div>
 
-        <label for="url-field">URL:</label>
-        <input id="url-field" name="url" type="text" th:value="${Wish.url}" >
+        <div class="loginFields">
+            <div>
+                <label for="url-field">URL:</label>
+            </div>
+            <div>
+                <input id="url-field" name="url" type="text" th:value="${Wish.url}">
+            </div>
+        </div>
 
-        <input type="submit" value="Opret ønske">
-
+        <button type="submit" value="Opdater ønske">Opdater ønske</button>
     </form>
 </div>
-
 </body>
 </html>
