@@ -168,6 +168,7 @@ public class WishController {
             if(wishlist != null) {
                 model.addAttribute("wishlistObject", wishlist);
                 model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                model.addAttribute("share", "http://localhost:8080/wishlistshare?id="+wishlist.getId());
                 return "wishlist";
             } else {
                 return "denied";

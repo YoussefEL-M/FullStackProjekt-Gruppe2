@@ -19,13 +19,8 @@
 </header>
 
 <h1>Velkommen tilbage <span th:text="${username}"></span></h1>
-<form action="/copyLink" method="post">
-
-    <div class="loginButton">
-        <input type="submit" value="Del din ønskeliste">
-    </div>
-
-</form>
+<a>Kopier linke til at dele ønskeliste:</a>
+<a th:text="${share}"></a>
 
 
 
