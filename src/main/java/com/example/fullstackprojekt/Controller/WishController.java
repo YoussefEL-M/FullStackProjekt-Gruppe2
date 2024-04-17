@@ -79,16 +79,15 @@ public class WishController {
             @RequestParam("wishlistId") int wishlistId
     ) {
         Wish newWish = new Wish(name, price, amount, description, url);
-
+        newWish.setWishlist_id(wishlistId);
         wishService.createWish(newWish);
 
-        return "redirect:/wishlist?id=" + wishlistId;
+        return "redirect:/wishlist";
     }
 
     @GetMapping("/")
     public String showWishlist(Model model) {
-        List<Wish> wishes = wishService.getAllWishes();
-        model.addAttribute("wishes", wishes);
+
         return "forside";
     }
 
@@ -148,13 +147,20 @@ public class WishController {
     }
 
     @GetMapping("/wishlist")
-    public String wishlist(@RequestParam("id") int id, Model model, HttpSession session){
-        model.addAttribute("wishlistObject", wishlistService.getWishlistById(id));
-        model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+    public String wishlist(Model model, HttpSession session){
         User user = (User) session.getAttribute("User");
-        if(user.getId() == wishlistService.getWishlistById(id).getUserId()){
-            return "wishlist";
+        if(user != null) {
+            int userId = user.getId();
+            Wishlist wishlist = wishlistService.getWishlistById(userId);
+            if(wishlist != null) {
+                model.addAttribute("wishlistObject", wishlist);
+                model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                return "wishlist";
+            } else {
+                return "denied";
+            }
+        } else {
+            return "login";
         }
-        else return "denied";
     }
 }

@@ -23,10 +23,7 @@ public class Wish {
     private String url;
     private boolean reserved;
     private int user_id;
-
-    @ManyToOne
-    @JoinColumn(name = "wishlist_id")
-    private Wishlist wishlist;
+    private int wishlist_id;
 
     public Wish(){
 
@@ -116,12 +113,12 @@ public class Wish {
         this.user_id = user_id;
     }
 
-    public void setWishlist(Wishlist wishlist) {
-        this.wishlist = wishlist;
+    public void setWishlist_id(int wishlist_id) {
+        this.wishlist_id = wishlist_id;
     }
 
-    public Wishlist getWishlist() {
-        return wishlist;
+    public int getWishlist_id() {
+        return wishlist_id;
     }
 
 }

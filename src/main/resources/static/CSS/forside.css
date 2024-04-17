@@ -37,7 +37,6 @@ header {
 }
 
 .login-button button:hover {
-    background-color: #fff;
     background:linear-gradient(to right, lightskyblue, steelblue);
 }
 
@@ -56,6 +55,163 @@ p {
     color: #666;
     line-height: 30px;
 }
+.testimonials {
+
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.testimonials h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.testimonial {
+    background-color: lightskyblue;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.testimonial:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    border-width: 10px;
+    border-style: solid;
+    border-color:lightskyblue transparent transparent transparent;
+}
+
+.testimonial p {
+    margin: 0;
+}
+
+.faq {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.faq h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.faq ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.faq li {
+    color: #666;
+    margin-bottom: 10px;
+    border-left: 3px solid lightskyblue;
+    padding-left: 15px;
+}
+
+.popular-categories {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.popular-categories h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.faq,
+.popular-categories {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.faq h3,
+.popular-categories h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.faq ul,
+.popular-categories .categories-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.faq li,
+.popular-categories .category {
+    color: #666;
+    margin-bottom: 10px;
+    border-left: 3px solid lightskyblue;
+    padding-left: 15px;
+}
+
+.category {
+    background-color: lightskyblue;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.category:hover {
+    background-color: lightskyblue;
+}
+
+.testimonials,
+.faq,
+.popular-categories {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto 20px;
+}
+
+
+.testimonials h3,
+.faq h3,
+.popular-categories h3 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 
 .inspiration {
 
@@ -67,7 +223,6 @@ p {
     padding-left: 5%;
     padding-right:1%;
 
-
 }
 
 .sektion {
@@ -75,14 +230,6 @@ p {
     text-align: center;
 }
 
-.inspirationslinks{
-
-
-
-
-
-
-}
 
 .inspirationslinks img {
 
