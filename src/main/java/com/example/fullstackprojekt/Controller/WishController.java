@@ -188,12 +188,13 @@ public class WishController {
         } else return "denied";
     }
 
-    @GetMapping("/reserve")
-    public String reserve(@RequestParam("id") int id){
+    @GetMapping("/reserve/{id}")
+    public String reserve(@PathVariable("id") int id){
 
         Wish wishToUpdate = wishService.getWishById(id);
         wishService.reserveWish(wishToUpdate);
 
-        return "wishlistShare?id="+wishToUpdate.getUser_id();
+        return "forside";
+        //return "/wishlistshare?id="+wishToUpdate.getUser_id();
     }
 }

@@ -50,7 +50,7 @@ public class WishRepo {
 
     public void reserveWish(Wish wish) {
         String sql = "UPDATE wishes SET reserved=true WHERE id = ?";
-        jdbcTemplate.update(sql, true);
+        jdbcTemplate.update(sql, wish.getId());
     }
 
 }
