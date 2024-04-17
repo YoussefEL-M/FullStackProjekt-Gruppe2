@@ -3,22 +3,17 @@ package com.example.fullstackprojekt.Controller;
 import com.example.fullstackprojekt.Model.User;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Model.Wishlist;
-import com.example.fullstackprojekt.Model.Wishlist;
-import com.example.fullstackprojekt.Model.User;
-import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Service.UserService;
 import com.example.fullstackprojekt.Service.WishService;
-import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.fullstackprojekt.Repository.WishlistRepo;
-import com.example.fullstackprojekt.Service.WishService;
 import com.example.fullstackprojekt.Service.WishlistService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -31,7 +26,6 @@ public class WishController {
     private WishlistService wishlistService;
     @Autowired
     private WishService wishService;
-
     @Autowired
     UserService userService;
 
@@ -164,5 +158,26 @@ public class WishController {
             return "wishlist";
         }
         else return "denied";
+    }
+
+    @GetMapping("/wishlistshare")
+    public String wishlistshare(@RequestParam("id") int id, Model model, HttpSession session) {
+        model.addAttribute("wishlistObject", wishlistService.getWishlistById(id));
+        model.addAttribute("wishlist", wishService.getWishesInWishlist(id));
+        User user = (User) session.getAttribute("User");
+        if (user.getId() != wishlistService.getWishlistById(id).getUserId()) {
+            return "wishlistShare";
+        } else return "denied";
+    }
+
+    @PostMapping("/copyLink")
+    public String copyLink(Model model, HttpSession session){
+        User user = (User) session.getAttribute("User");
+        model.addAttribute("wishlistObject", wishlistService.getWishlistById(user.getId()));
+        model.addAttribute("wishlist", wishService.getWishesInWishlist(user.getId()));
+
+
+
+        return "wishlist";
     }
 }

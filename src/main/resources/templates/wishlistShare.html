@@ -19,15 +19,6 @@
 </header>
 
 <h1>Velkommen tilbage <span th:text="${username}"></span></h1>
-<form action="/copyLink" method="post">
-
-    <div class="loginButton">
-        <input type="submit" value="Del din ønskeliste">
-    </div>
-
-</form>
-
-
 
 <!--<div class="wish-container">
 <div class="wish-container">
@@ -48,8 +39,8 @@
         <th>Antal ønsket</th>
         <th>Beskrivelse</th>
         <th>Billede</th>
-        <th>Opdater ønske</th>
-        <th>Slet ønske</th>
+        <th>Reserver</th>
+
     </tr>
     </thead>
     <tbody>
@@ -59,17 +50,13 @@
         <td th:text="${wish.amount}"></td>
         <td th:text="${wish.description}"></td>
         <td> <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat."> </td>
-        <td> <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Opdater ønske</a></td>
-        <td> <a th:href="@{'/delete/' + ${wish.id}}" href="forside.html">Slet ønske</a></td>
+        <td> <a th:href="@{'/'}" href="/">Reserver</a></td>
+
     </tr>
     </tbody>
 </table>
 
 
-<div class="create">
-    <h2> Opret nyt ønske</h2>
-    <a href="WishForm.html" th:href="@{/WishForm}">Klik her for at oprette et nyt ønske</a>
-</div>
 
 <footer>
     <div class="container">
