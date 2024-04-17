@@ -28,6 +28,10 @@ public class WishService {
         wishRepository.updateWish(wish);
     }
 
+    public void reserveWish(Wish wish) {
+        wishRepository.reserveWish(wish);
+    }
+
     public void deleteWishById(int id) {
         wishRepository.deleteWishById(id);
     }

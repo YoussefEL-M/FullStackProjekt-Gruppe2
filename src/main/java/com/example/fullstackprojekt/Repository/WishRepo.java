@@ -48,4 +48,9 @@ public class WishRepo {
         jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getId());
     }
 
+    public void reserveWish(Wish wish) {
+        String sql = "UPDATE wishes SET reserved=true WHERE id = ?";
+        jdbcTemplate.update(sql, true);
+    }
+
 }
