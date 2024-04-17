@@ -3,6 +3,7 @@ package com.example.fullstackprojekt.Service;
 import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Repository.WishRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class WishService {
         wishRepository.deleteWishById(id);
     }
 
-    public Wish getWishById(int id) {
+    public Wish getWishById(int id) throws EmptyResultDataAccessException {
         return wishRepository.getWishById(id);
     }
 

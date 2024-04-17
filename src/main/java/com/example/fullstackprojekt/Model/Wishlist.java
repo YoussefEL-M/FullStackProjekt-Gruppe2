@@ -12,8 +12,6 @@ public class Wishlist {
     private int id;
     private int userId;
     private String name;
-    @OneToMany
-    private List<Wish> list;
     public Wishlist(int id, int userId, String name){
         this.id = id;
         this.userId=userId;

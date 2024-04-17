@@ -15,6 +15,7 @@ import com.example.fullstackprojekt.Repository.WishlistRepo;
 import com.example.fullstackprojekt.Service.WishService;
 import com.example.fullstackprojekt.Service.WishlistService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,13 +49,19 @@ public class WishController {
                             @RequestParam("password") String password,
                             Model model,
                             HttpSession session) {
-
-        User user = userService.getUserByUsername(username);
-        if(user.getPassword().equals(password)) {
-            session.setAttribute("User", user);
-            return "redirect:/userpage";
+        try {
+            User user = userService.getUserByUsername(username);
+            if (user.getPassword().equals(password)) {
+                session.setAttribute("User", user);
+                return "redirect:/userpage";
+            } else {
+                model.addAttribute("passwordMismatch", true);
+                return "redirect:/login";
+            }
+        } catch (EmptyResultDataAccessException E){
+            model.addAttribute("usernameMissing", true);
+            return "redirect:/login";
         }
-        else return "denied";
 
     }
 
@@ -62,19 +69,22 @@ public class WishController {
     public String userpage(Model model, HttpSession session){
         User user = (User) session.getAttribute("User");
         model.addAttribute("link", "wishlist?id="+user.getId());
-
         return "/userpage";
     }
 
     @GetMapping("/WishForm")
     public String create(Model model, HttpSession session){
-        User user = (User) session.getAttribute("User");
-        int userId = user.getId();
+        try {
+            User user = (User) session.getAttribute("User");
+            int userId = user.getId();
 
-        List<Wishlist> wishlists = wishlistService.getWishlistsForUser(userId);
+            List<Wishlist> wishlists = wishlistService.getWishlistsForUser(userId);
 
-        model.addAttribute("wishlists", wishlists);
-        return "WishForm";
+            model.addAttribute("wishlists", wishlists);
+            return "WishForm";
+        } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
     }
 
     @PostMapping("/createWish")
@@ -101,9 +111,13 @@ public class WishController {
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
-        Wish wish = wishService.getWishById(id);
-        model.addAttribute("Wish", wish);
-        return "wishUpdateForm";
+        try {
+            Wish wish = wishService.getWishById(id);
+            model.addAttribute("Wish", wish);
+            return "wishUpdateForm";
+        } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
     }
 
     @PostMapping("/updateWish")
@@ -114,17 +128,20 @@ public class WishController {
             @RequestParam("amount") int amount,
             @RequestParam("description") String description
     ){
+        try {
+            Wish wishToUpdate = wishService.getWishById(id);
 
-        Wish wishToUpdate = wishService.getWishById(id);
+            wishToUpdate.setName(name);
+            wishToUpdate.setPrice(price);
+            wishToUpdate.setAmount(amount);
+            wishToUpdate.setDescription(description);
 
-        wishToUpdate.setName(name);
-        wishToUpdate.setPrice(price);
-        wishToUpdate.setAmount(amount);
-        wishToUpdate.setDescription(description);
+            wishService.updateWish(wishToUpdate);
 
-        wishService.updateWish(wishToUpdate);
-
-        return "redirect:/wishlist?id=" + wishToUpdate.getId();
+            return "redirect:/wishlist?id=" + wishToUpdate.getId();
+        } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
     }
 
     @GetMapping("/delete/{id}")
@@ -156,19 +173,23 @@ public class WishController {
 
     @GetMapping("/wishlist")
     public String wishlist(Model model, HttpSession session){
-        User user = (User) session.getAttribute("User");
-        if(user != null) {
-            int userId = user.getId();
-            Wishlist wishlist = wishlistService.getWishlistById(userId);
-            if(wishlist != null) {
-                model.addAttribute("wishlistObject", wishlist);
-                model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
-                return "wishlist";
+        try {
+            User user = (User) session.getAttribute("User");
+            if (user != null) {
+                int userId = user.getId();
+                Wishlist wishlist = wishlistService.getWishlistById(userId);
+                if (wishlist != null) {
+                    model.addAttribute("wishlistObject", wishlist);
+                    model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                    return "wishlist";
+                } else {
+                    return "denied";
+                }
             } else {
-                return "denied";
+                return "login";
             }
-        } else {
-            return "login";
+        } catch (EmptyResultDataAccessException E){
+            return "404";
         }
     }
 }

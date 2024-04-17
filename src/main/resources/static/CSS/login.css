@@ -84,3 +84,9 @@ h1 {
 
 }
 
+#password_mismatch{
+    margin: 0;
+}
+#username_missing{
+    margin: 0;
+}

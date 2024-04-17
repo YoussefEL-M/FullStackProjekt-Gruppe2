@@ -2,6 +2,7 @@ package com.example.fullstackprojekt.Repository;
 
 import com.example.fullstackprojekt.Model.Wishlist;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,12 +15,12 @@ public class WishlistRepo {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<Wishlist> getWishlistsForUser(int user_id){
+    public List<Wishlist> getWishlistsForUser(int user_id) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM wishlists WHERE user_id = ?";
         RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
         return jdbcTemplate.query(sql, rowMapper, user_id);
     }
-    public Wishlist getWishlistById(int id){
+    public Wishlist getWishlistById(int id) throws EmptyResultDataAccessException{
         String sql = "SELECT * FROM wishlists WHERE id = ?";
         RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
