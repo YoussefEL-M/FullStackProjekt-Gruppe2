@@ -14,15 +14,17 @@ body{
     width: 30vw;
     flex-direction: column;
     display: flex;
+    overflow:auto;
 }
 
 .createWishForm input[type="text"],
 .createWishForm input[type="number"],
 .createWishForm textarea,
 .createWishForm button {
-    width: calc(100% - 15px);
+    width: 100%;
     border: none;
     background-color: transparent;
+    padding: 8px;
     margin-top: 10px;
     cursor: pointer;
 }
@@ -33,11 +35,10 @@ body{
     font-size: 1.1rem;
     transition: background-color 1.0s;
     font-family: sans-serif;
-    background-color: #dbdede;
     border-radius: 15px;
     padding: 4px;
-    width: 250px;
-    background: linear-gradient(to right, lightskyblue, steelblue);
+    width: calc(100% - 16px);
+    background: #dbdede linear-gradient(to right, lightskyblue, steelblue);
 }
 .createWishForm input[type="text"],
 .createWishForm input[type="number"],
