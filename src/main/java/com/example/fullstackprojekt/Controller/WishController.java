@@ -183,7 +183,7 @@ public class WishController {
     public String showWishlistUpdateForm(@PathVariable("id") int id, Model model){
         try {
             Wishlist wishlist = wishlistService.getWishlistById(id);
-            model.addAttribute("Wislist", wishlist);
+            model.addAttribute("Wishlist", wishlist);
             return "wishlistUpdateForm";
         } catch (EmptyResultDataAccessException E){
             return "404";

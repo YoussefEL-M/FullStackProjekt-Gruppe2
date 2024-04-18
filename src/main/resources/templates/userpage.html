@@ -36,8 +36,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="wishlist : ${wishlists}">
+            <tr th:each="wishlist : ${wishlist}">
                 <td th:text="${wishlist.name}"></td>
+                <td> <a th:href="@{'/update/' + ${wishlist.id}}" href="userpage.html">Rediger ønskeliste</a></td>
+                <td> <a th:href="@{'/delete/' + ${wishlist.id}}" href=""></a></td>
             </tr>
         </tbody>
     </table>
