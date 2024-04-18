@@ -37,7 +37,7 @@
                 <a th:href="@{'/delete/' + ${wish.id}}" href="wishlist.html">Delete wish</a>
             </div>
         </div> -->
-        <div class="share-button">
+        <div class="share">
             <button type="button" id="sharebutton" onclick="
     navigator.clipboard.writeText(window.location.href);
     document.getElementById('sharebutton').innerHTML = 'Link kopieret';
@@ -45,7 +45,7 @@
         document.getElementById('sharebutton').innerHTML = 'Del ønskeliste';
     }, 2000);">Del ønskeliste</button>
             <button class="share-button" th:if="${user.id != 0 and user.id != wishlistObject.userId and !following}" th:attr="onclick='window.location.href=\'/follow?id=' + ${wishlistObject.id} + '\''">Følg</button>
-            <button class="share-button" th:if="${following}" th:attr="onclick='window.location.href=\'/unfollow?id=' + ${wishlistObject.id} + '\''">Stop med at følge</button>
+            <button class="follow-button" th:if="${following}" th:attr="onclick='window.location.href=\'/unfollow?id=' + ${wishlistObject.id} + '\''">Stop med at følge</button>
 
         </div>
         <table>

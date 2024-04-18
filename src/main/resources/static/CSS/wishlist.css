@@ -189,17 +189,29 @@ button:hover {
     background-color: skyblue;
 }
 
-.share-button {
+.share-button,
+.follow-button {
     margin-bottom: 10px;
-    display: flex;
-    padding-left: 20px;
 }
 
-.share-button button:hover {
+.share-button button,
+.follow-button button {
+    background-color: steelblue;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+}
+
+.share-button button:hover,
+.follow-button button:hover {
     background-color: #555;
 }
 
-.share-button button:active {
+.share-button button:active,
+.follow-button button:active {
     transform: scale(0.95);
     transition: transform 0.1s ease-out;
 }
