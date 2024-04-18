@@ -126,13 +126,13 @@ public class WishController {
 
     @PostMapping("/createWishlist")
     public String createWishlist(
-            @RequestParam("name") String name,
+            @RequestParam("name") String name, @RequestParam("isPrivate") boolean isPrivate,
             HttpSession session) {
         try {
             User user = (User) session.getAttribute("User");
             int userId = user.getId();
 
-            Wishlist newWishlist = new Wishlist(name);
+            Wishlist newWishlist = new Wishlist(name, isPrivate);
             newWishlist.setUserId(userId);
 
             wishlistService.createWishlist(newWishlist);
@@ -195,12 +195,13 @@ public class WishController {
     @PostMapping("/updateWishlist")
     public String updateWishlist(
             @RequestParam("id") int id,
-            @RequestParam("name") String name
+            @RequestParam("name") String name, @RequestParam("isPrivate") boolean isPrivate
             ){
         try{
             Wishlist wishlistToUpdate = wishlistService.getWishlistById(id);
 
             wishlistToUpdate.setName(name);
+            wishlistToUpdate.setPrivate(isPrivate);
 
             wishlistService.updateWishlist(wishlistToUpdate);
             return "redirect:/userpage?id="+wishlistToUpdate.getUserId();
@@ -291,10 +292,19 @@ public class WishController {
             if(user == null)
                 user = new User(0, "No user", "No user", "null", false);
             Wishlist wishlist = wishlistService.getWishlistById(id);
-            model.addAttribute("wishlistObject", wishlist);
-                    model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
-                    model.addAttribute("user", user);
-                    return "wishlist";
+            if(!wishlist.isPrivate()) {
+                model.addAttribute("wishlistObject", wishlist);
+                model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                model.addAttribute("user", user);
+                return "wishlist";
+            }
+            else if(user.getId() == wishlist.getUserId() || userService.checkIfFriends(user.getId(), wishlist.getUserId())){
+                model.addAttribute("wishlistObject", wishlist);
+                model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                model.addAttribute("user", user);
+                return "wishlist";
+            }
+            else return "denied";
 
         } catch (EmptyResultDataAccessException E){
             return "404";
