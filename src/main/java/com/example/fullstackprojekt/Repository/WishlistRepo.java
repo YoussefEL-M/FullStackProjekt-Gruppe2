@@ -28,8 +28,8 @@ public class WishlistRepo {
     }
 
     public void createWishlist(Wishlist wishlist){
-        String sql = "INSERT INTO wishlists (id, user_id, name, private) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, wishlist.getId(), wishlist.getUserId(), wishlist.getName(), wishlist.isPrivate());
+        String sql = "INSERT INTO wishlists (user_id, name, isPrivate) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, wishlist.getUserId(), wishlist.getName(), wishlist.isPrivate());
     }
     public void deleteWishlistsById(int id){
         String sql = "DELETE FROM wishlists WHERE id = ?";
@@ -38,8 +38,8 @@ public class WishlistRepo {
 
 
     public void updateWishlist(Wishlist wishlist) {
-        String sql = "UPDATE wishlists SET name = ?";
-        jdbcTemplate.update(sql, wishlist.getName());
+        String sql = "UPDATE wishlists SET name = ? isPrivate = ?";
+        jdbcTemplate.update(sql, wishlist.getName(), wishlist.isPrivate());
     }
 
 
