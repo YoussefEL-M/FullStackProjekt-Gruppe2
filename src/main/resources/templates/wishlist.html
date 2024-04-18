@@ -44,6 +44,8 @@
     setTimeout(function() {
         document.getElementById('sharebutton').innerHTML = 'Del ønskeliste';
     }, 2000);">Del ønskeliste</button>
+            <button class="share-button" th:if="${user.id != 0 and user.id != wishlistObject.userId and !following}" th:attr="onclick='window.location.href=\'/follow?id=' + ${wishlistObject.id} + '\''">Følg</button>
+            <button class="share-button" th:if="${following}" th:attr="onclick='window.location.href=\'/unfollow?id=' + ${wishlistObject.id} + '\''">Stop med at følge</button>
 
         </div>
         <table>

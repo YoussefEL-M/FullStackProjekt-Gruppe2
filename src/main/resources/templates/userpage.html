@@ -54,6 +54,21 @@
             </tr>
         </tbody>
     </table>
+    <h2>Fulgte ønskelister</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Navn</th>
+            <th>Følg</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="wishlist : ${following}">
+            <td> <a th:text="${wishlist.name}" th:href="@{'/wishlist?id='+${wishlist.id}}"></a></td>
+            <td> <a th:href="@{'/unfollow?id=' + ${wishlist.id}}">Stop med at følge</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 

@@ -44,7 +44,7 @@ public class WishlistRepo {
 
 
     public List<Wishlist> getFollowedWishlists(int user_id){
-        String sql = "SELECT wishlists.id, wishlists.name, wishlists.user_id, wishlist.private FROM wishlists INNER JOIN following_relations ON following_relations.user_id = ?";
+        String sql = "SELECT wishlists.id, wishlists.name, wishlists.user_id, wishlists.isPrivate FROM wishlists INNER JOIN following_relations ON following_relations.wishlist_id = wishlists.id WHERE following_relations.user_id = ?";
         RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
         return jdbcTemplate.query(sql, rowMapper, user_id);
     }

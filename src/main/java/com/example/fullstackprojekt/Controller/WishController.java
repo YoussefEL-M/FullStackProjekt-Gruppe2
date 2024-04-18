@@ -83,13 +83,15 @@ public class WishController {
     @GetMapping("/userpage")
     public String userpage(Model model, HttpSession session){
         User user = (User) session.getAttribute("User");
+        if(user == null) {
+            return "denied";
+        }
         int userId = user.getId();
         List<Wishlist> list = wishlistService.getWishlistsForUser(userId);
-        if(user == null) {
-            user = new User(0, "No user", "No user", "null", false);
-        }
+        List<Wishlist> followingList = wishlistService.getFollowedWishlists(userId);
         model.addAttribute("user", user);
         model.addAttribute("list", list);
+        model.addAttribute("following", followingList);
 
 
         return "/userpage";
@@ -359,12 +361,16 @@ public class WishController {
                 model.addAttribute("wishlistObject", wishlist);
                 model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
                 model.addAttribute("user", user);
+                boolean following = wishlistService.getFollowedWishlists(user.getId()).stream().anyMatch(wl -> wl.getId() == wishlist.getId());
+                model.addAttribute("following", following);
                 return "wishlist";
             }
             else if(user.getId() == wishlist.getUserId() || userService.checkIfFriends(user.getId(), wishlist.getUserId())){
                 model.addAttribute("wishlistObject", wishlist);
                 model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
                 model.addAttribute("user", user);
+                boolean following = wishlistService.getFollowedWishlists(user.getId()).stream().anyMatch(wl -> wl.getId() == wishlist.getId());
+                model.addAttribute("following", following);
                 return "wishlist";
             }
             else return "denied";
@@ -376,6 +382,22 @@ public class WishController {
             model.addAttribute("user", user);
             return "404";
         }
+    }
+
+    @GetMapping("/unfollow")
+    public String unfollow(@RequestParam("id") int id, HttpSession session){
+        User user = (User) session.getAttribute("User");
+        wishlistService.removeFollowedWishlist(user.getId(), id);
+
+        return "redirect:/userpage";
+    }
+
+    @GetMapping("/follow")
+    public String follow(@RequestParam("id")int id, HttpSession session){
+        User user = (User) session.getAttribute("User");
+        wishlistService.addFollowedWishlist(user.getId(), id);
+
+        return "redirect:/userpage";
     }
 }
 
