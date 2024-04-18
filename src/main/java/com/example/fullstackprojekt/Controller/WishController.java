@@ -53,6 +53,11 @@ public class WishController {
         return "/login";
 
     }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("User");
+        return "redirect:/login";
+    }
 
     @PostMapping("/loggingIn")
     public String loggingIn(@RequestParam("username") String username,
@@ -85,6 +90,8 @@ public class WishController {
         }
         model.addAttribute("user", user);
         model.addAttribute("list", list);
+
+
         return "/userpage";
     }
 
@@ -222,10 +229,11 @@ public class WishController {
     @PostMapping("/updateWishlist")
     public String updateWishlist(
             @RequestParam("id") int id,
-            @RequestParam("name") String name, @RequestParam(value = "isPrivate", required = false) boolean isPrivate,
+            @RequestParam("name") String name,
+            @RequestParam(value = "isPrivate", required = false) boolean isPrivate,
             HttpSession session,
             Model model
-            ){
+    ){
         try{
             Wishlist wishlistToUpdate = wishlistService.getWishlistById(id);
 

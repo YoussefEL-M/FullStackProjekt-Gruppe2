@@ -15,8 +15,14 @@
             <span th:if="${user.id == 0}">
                         <a th:href="@{/login}"> <button>Log ud </button></a>
             </span>
-            <span th:if="${user.id != 0}">
+
+            <span class="profile" th:if="${user.id != 0}">
                         <a th:href="@{/userpage}"> <button>Profil</button></a>
+            </span>
+
+            <div class="logout">
+            <span  th:if="${user.id != 0}">
+                <a th:href="@{/logout}"> <button>Logout</button></a>
             </span>
         </div>
     </div>
@@ -41,8 +47,8 @@
         </thead>
         <tbody>
             <tr th:each="wishlist : ${list}">
-                <td> <a th:text="${wishlist.name}" th:href="@{'wishlist?=id' + ${wishlist.id}}"></a></td>
-                <td> <a th:href="@{'/updateWishlist/' + ${wishlist.id}}" href="wishlistUpdateForm.html">Rediger ønskeliste</a></td>
+                <td> <a th:text="${wishlist.name}" th:href="@{'/wishlist?id='+${wishlist.id}}"></a></td>
+                <td> <a th:href="@{'/updateList/' + ${wishlist.id}}" href="wishlistUpdateForm.html">Rediger ønskeliste</a></td>
                 <td> <a th:href="@{'/deleteList/' + ${wishlist.id}}" href="userpage.html" onclick="return confirm('Er du sikker på, at du vil slette denne ønskeliste?')">Slet ønskeliste</a></td>
             </tr>
         </tbody>

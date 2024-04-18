@@ -38,8 +38,8 @@ public class WishlistRepo {
 
 
     public void updateWishlist(Wishlist wishlist) {
-        String sql = "UPDATE wishlists SET name = ? isPrivate = ?";
-        jdbcTemplate.update(sql, wishlist.getName(), wishlist.isPrivate());
+        String sql = "UPDATE wishlists SET name = ?, isPrivate = ? WHERE id = ? ";
+        jdbcTemplate.update(sql, wishlist.getName(), wishlist.isPrivate(), wishlist.getId());
     }
 
 

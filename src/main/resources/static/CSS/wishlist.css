@@ -38,6 +38,10 @@ header {
     padding: 10px 0;
     width: 100%;
 }
+header .login-button{
+    display: flex;
+    flex-direction: column;
+}
 
 .logo img {
     height: 100px;
@@ -51,6 +55,9 @@ header {
     padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
+}
+.profile{
+   padding-bottom:15% ;
 }
 
 .login-button button:hover {
