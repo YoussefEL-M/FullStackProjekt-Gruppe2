@@ -1,39 +1,41 @@
-CREATE DATABASE if not exists wishlistdatabase;
+CREATE DATABASE IF NOT EXISTS wishlistdatabase;
 
 USE wishlistdatabase;
 
-DROP TABLE if exists wishes;
-DROP TABLE if exists wishlists;
-DROP TABLE if exists users;
+DROP TABLE IF EXISTS wishes;
+DROP TABLE IF EXISTS wishlists;
+DROP TABLE IF EXISTS users;
 
-CREATE TABLE if not exists users (
-                                     id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                                     name varchar(255),
-                                     username varchar(255),
-                                     password varchar(255)
+CREATE TABLE IF NOT EXISTS users (
+                                     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                                     name VARCHAR(255),
+                                     username VARCHAR(255),
+                                     password VARCHAR(255)
 );
 
-CREATE TABLE if not exists wishes (
+CREATE TABLE IF NOT EXISTS wishlists (
+                                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+                                         name VARCHAR(50) NOT NULL,
+                                         user_id INT REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS wishes (
                                       id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                                      name varchar(255),
-                                      price double,
-                                      amount int,
-                                      description varchar(255),
-                                      url varchar(255),
-                                      image_url varchar(255),
-                                      wishlist_id int references wishlists(id),
-                                      reserved boolean,
-                                      reserved_by int references users(id)
+                                      name VARCHAR(255),
+                                      price DOUBLE,
+                                      amount INT,
+                                      description VARCHAR(255),
+                                      url VARCHAR(255),
+                                      image_url VARCHAR(255),
+                                      wishlist_id INT REFERENCES wishlists(id),
+                                      reserved BOOLEAN,
+                                      reserved_by INT REFERENCES users(id)
 );
 
-CREATE TABLE if not exists wishlists (
-                                         id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                                         name varchar(50) NOT NULL,
-                                         user_id int references users(id)
-);
+ALTER TABLE wishes MODIFY reserved BOOLEAN DEFAULT FALSE;
+ALTER TABLE wishes MODIFY reserved_by BOOLEAN DEFAULT FALSE;
 
-INSERT INTO users (id, name, username, password) VALUES (1, 'Aspen', 'ABenoit', 'test');
-INSERT INTO wishlists (id, name, user_id) VALUES (1, 'Test', 1);
-INSERT INTO wishes (id, name, price, amount, description, url, wishlist_id) VALUES (1, 'Please Be Happy', 150, 1, 'The most excellent visual novel.', 'https://vnstudioelan.itch.io/please-be-happy', 1);
-INSERT INTO wishes (name, price, amount, description, url, image_url, wishlist_id) VALUES ('Please Be Happy', 150, 1, 'The most excellent visual novel.', 'https://vnstudioelan.itch.io/please-be-happy', 'https://cdn.akamai.steamstatic.com/steam/apps/844670/capsule_616x353.jpg?t=1691302877', 1);
-INSERT INTO wishes (name, price, amount, description, url, image_url, wishlist_id) VALUES ('Please Be Happy', 150, 1, 'The most excellent visual novel.', 'https://vnstudioelan.itch.io/please-be-happy', 'https://cdn.akamai.steamstatic.com/steam/apps/844670/capsule_616x353.jpg?t=1691302877', 1);
+
+SELECT * FROM users;
+SELECT * FROM wishes;
+SELECT * FROM wishlists;
