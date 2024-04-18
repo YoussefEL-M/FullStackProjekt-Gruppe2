@@ -11,6 +11,16 @@
 
         <form action="/createUser" method="post">
             <h1>Opret en bruger</h1>
+
+            <div th:if="${usernameExists}" class="errorMessage">
+                Brugernavnet eksisterer allerede. Vælg venligst et andet brugernavn.
+            </div>
+
+
+            <div class="loginFields">
+                <label for="navn">Navn</label>
+                <input type="text" id="navn" name="navn" placeholder="Indtast dit display navn..." required>
+            </div>
             <div class="loginFields">
                 <label for="brugernavn">Brugernavn</label>
                 <input type="text" id="brugernavn" name="brugernavn" placeholder="Indtast dit brugernavn..." required>

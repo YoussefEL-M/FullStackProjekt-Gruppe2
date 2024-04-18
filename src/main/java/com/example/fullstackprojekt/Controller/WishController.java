@@ -100,6 +100,10 @@ public class WishController {
             model.addAttribute("wishlists", wishlists);
             return "WishForm";
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
@@ -131,6 +135,10 @@ public class WishController {
             model.addAttribute("wishlists", wishlists);
             return "WishlistForm";
         } catch (EmptyResultDataAccessException e) {
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
@@ -152,12 +160,16 @@ public class WishController {
 
 
     @GetMapping("/update/{id}")
-    public String showUpdateForm(@PathVariable("id") int id, Model model) {
+    public String showUpdateForm(@PathVariable("id") int id, Model model, HttpSession session) {
         try {
             Wish wish = wishService.getWishById(id);
             model.addAttribute("Wish", wish);
             return "wishUpdateForm";
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
@@ -168,7 +180,9 @@ public class WishController {
             @RequestParam("name") String name,
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
-            @RequestParam("description") String description
+            @RequestParam("description") String description,
+            HttpSession session,
+            Model model
 
     ){
         try {
@@ -183,17 +197,25 @@ public class WishController {
 
             return "redirect:/wishlist?id=" + wishToUpdate.getWishlist_id();
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
 
     @GetMapping("/updateList/{id}")
-    public String showWishlistUpdateForm(@PathVariable("id") int id, Model model){
+    public String showWishlistUpdateForm(@PathVariable("id") int id, Model model, HttpSession session){
         try {
             Wishlist wishlist = wishlistService.getWishlistById(id);
             model.addAttribute("Wishlist", wishlist);
             return "wishlistUpdateForm";
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
@@ -201,7 +223,9 @@ public class WishController {
     @PostMapping("/updateWishlist")
     public String updateWishlist(
             @RequestParam("id") int id,
-            @RequestParam("name") String name, @RequestParam(value = "isPrivate", required = false) boolean isPrivate
+            @RequestParam("name") String name, @RequestParam(value = "isPrivate", required = false) boolean isPrivate,
+            HttpSession session,
+            Model model
             ){
         try{
             Wishlist wishlistToUpdate = wishlistService.getWishlistById(id);
@@ -212,6 +236,10 @@ public class WishController {
             wishlistService.updateWishlist(wishlistToUpdate);
             return "redirect:/userpage?id="+wishlistToUpdate.getUserId();
         }catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
@@ -237,7 +265,7 @@ public class WishController {
     }
 
     @GetMapping("/reserve/{id}")
-    public String reserve(@PathVariable("id") int id, HttpSession session){
+    public String reserve(@PathVariable("id") int id, HttpSession session, Model model){
         try {
             Wish wish = wishService.getWishById(id);
             User user = (User) session.getAttribute("User");
@@ -248,13 +276,17 @@ public class WishController {
             }
 
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
 
         return "redirect:/wishlist?id="+id;
     }
     @GetMapping("/cancel/{id}")
-    public String cancel(@PathVariable("id") int id, HttpSession session){
+    public String cancel(@PathVariable("id") int id, HttpSession session, Model model){
         try {
             Wish wish = wishService.getWishById(id);
             User user = (User) session.getAttribute("User");
@@ -265,6 +297,10 @@ public class WishController {
             }
 
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
 
@@ -278,17 +314,31 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("brugernavn")String brugernavn,
+    public String createAnAccount(@RequestParam("navn")String navn,
+                                  @RequestParam("brugernavn")String brugernavn,
                                   @RequestParam("adgangskode") String adgangskode,
-                                  RedirectAttributes redirectAttributes) {
+                                  RedirectAttributes redirectAttributes,
+                                  Model model) {
+        User existingUser;
+        try {
+            existingUser = userService.getUserByUsername(brugernavn);
+        } catch (EmptyResultDataAccessException E){
+            existingUser=null;
+        }
+        if(existingUser != null){
+            model.addAttribute("usernameExists", true);
+            return "createUser";
+        }else {
 
+        redirectAttributes.addAttribute("name", navn);
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        User newUser = new User(brugernavn, adgangskode);
+        User newUser = new User(navn, brugernavn, adgangskode);
         userService.createUser(newUser);
 
-        return "redirect:/login";
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/wishlist")
@@ -313,6 +363,10 @@ public class WishController {
             else return "denied";
 
         } catch (EmptyResultDataAccessException E){
+            User user = (User) session.getAttribute("User");
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            model.addAttribute("user", user);
             return "404";
         }
     }
