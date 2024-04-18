@@ -201,7 +201,7 @@ public class WishController {
             wishlistToUpdate.setName(name);
 
             wishlistService.updateWishlist(wishlistToUpdate);
-            return "redirect:/userpage?id="+id;
+            return "redirect:/userpage?id="+wishlistToUpdate.getUserId();
         }catch (EmptyResultDataAccessException E){
             return "404";
         }
@@ -209,16 +209,22 @@ public class WishController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id){
+
+        int wishlistId = wishService.getWishById(id).getWishlist_id();
+
         wishService.deleteWishById(id);
 
-        return "redirect:/wishlist?id="+id;
+        return "redirect:/wishlist?id="+wishlistId;
     }
 
     @GetMapping("/deleteList/{id}")
     public String deleteWishlist(@PathVariable("id") int id){
+
+        int userId = wishlistService.getWishlistById(id).getUserId();
+
         wishlistService.deleteWishlist(id);
 
-        return "redirect:/userpage?id="+id;
+        return "redirect:/userpage?id="+userId;
     }
 
     @GetMapping("/reserve/{id}")
