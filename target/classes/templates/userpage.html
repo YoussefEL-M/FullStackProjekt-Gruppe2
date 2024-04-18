@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ønskelisten</title>
-    <link rel="stylesheet" href="/CSS/forside.css" th:href="@{/CSS/forside.css}" >
-    <link rel="stylesheet" href="/CSS/wishlist.css">
+    <link rel="stylesheet" href="/CSS/wishlist.css" th:href="@{/CSS/wishlist.css}">
 </head>
 <body>
 <header>
@@ -21,6 +20,21 @@
 <div class="main-content">
 
     <a th:href="@{'/'+${link}}"> <button>Din ønskeliste </button></a>
+
+    <div class="create">
+
+        <h2> Opret en ny ønskeliste</h2>
+        <a href="WishlistForm.html" th:href="@{/WishlistForm}">Klik her for at oprette en ny ønskeliste</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th th:if=""
+            </tr>
+        </thead>
+    </table>
 </div>
 
 

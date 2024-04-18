@@ -46,6 +46,7 @@ header {
     padding: 40px;
     margin-top: 20px;
     border-radius: 10px;
+
 }
 
 h1, h2, h3{
@@ -275,6 +276,7 @@ th {
 .create {
     text-align: center;
     margin-top: 20px;
+
 }
 
 .createWishForm label{
@@ -288,6 +290,7 @@ th {
 
 .create a:hover {
     text-decoration: underline;
+
 }
 
 footer {
