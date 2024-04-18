@@ -9,7 +9,13 @@
 
 <div class="loginForm">
     <form action="/loggingIn" method="post">
+
+
+
         <h1>Login</h1>
+
+        <span style=" color:red"><p id="username_missing"></p></span>
+
         <div class="loginFields">
             <div>
                 <label for="username">Brugernavn</label>
@@ -19,7 +25,7 @@
             </div>
 
         </div>
-        <span color="red"><p id="username_missing"></p></span>
+
 
         <div class="loginFields">
             <div>
@@ -29,7 +35,7 @@
                 <input type="password" id="password" name="password" placeholder="Indtast adgangskode..." required>
             </div>
         </div>
-        <span color="red"><p id="password_mismatch"></p></span>
+        <span style="color:red"><p id="password_mismatch"></p></span>
         <div class="glemt">
             <p><a href="/">Glemt adgangskode?</a></p>
         </div>
