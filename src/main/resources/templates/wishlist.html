@@ -13,7 +13,12 @@
                 <a th:href="@{/}"> <img src="/Images/WishLogo.png" th:src="@{/Images/WishLogo.png}" alt="Logo"> </a>
             </div>
             <div class="login-button">
-                <a th:href="@{/userpage}"> <button>Profil</button> </a>
+                <span th:if="${user.id == 0}">
+                        <a th:href="@{/login}"> <button>Login </button></a>
+            </span>
+                <span th:if="${user.id != 0}">
+                        <a th:href="@{/userpage}"> <button>Profil</button></a>
+            </span>
             </div>
         </div>
     </header>
@@ -33,7 +38,7 @@
             </div>
         </div> -->
         <div class="share-button">
-            <button type="button" onclick="navigator.clipboard.writeText(window.location.href)">Del ønskeliste</button>
+            <button type="button" onclick="navigator.clipboard.writeText(window.location.href);return alert('Link er kopieret')">Del ønskeliste</button>
         </div>
         <table>
             <thead>

@@ -37,6 +37,12 @@ public class WishController {
     UserService userService;
 
 
+    @GetMapping("/")
+    public String displayFrontpage() {
+
+        return "forside";
+    }
+
     @GetMapping("/login")
     public String login() {
 
@@ -70,6 +76,9 @@ public class WishController {
         User user = (User) session.getAttribute("User");
         int userId = user.getId();
         List<Wishlist> list = wishlistService.getWishlistsForUser(userId);
+        if(user == null)
+            user = new User(0, "No user", "No user", "null", false);
+        model.addAttribute("user", user);
         model.addAttribute("link", "wishlist?id="+user.getId());
         model.addAttribute("list", list);
         return "/userpage";
