@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdaterings form for Ønskelister</title>
+    <link rel="stylesheet" href="/CSS/wishform.css" th:href="@{/CSS/wishform.css}">
+</head>
+<body>
+
+<form action="/updateList/" method="post">
+    <h2>Opdater ønske</h2>
+
+    <input name="id" type="number" hidden th:value="${Wislist.id}">
+
+    <div class="loginFields">
+        <div>
+            <label for="name-field">Navn på ønske:</label>
+        </div>
+        <div>
+            <input id="name-field" name="name" type="text" th:value="${Wislist.id}">
+        </div>
+    </div>
+
+
+
+    <button type="submit" value="Opdater ønske">Opdater ønske</button>
+</form>
+
+</body>
+</html>
