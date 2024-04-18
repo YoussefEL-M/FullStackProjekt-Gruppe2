@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Wishlist</title>
+  <link rel="stylesheet" href="/CSS/wishform.css" th:href="@{/CSS/wishform.css}">
+</head>
+<body>
+<div class="createWishForm">
+  <form action="/createWishlist" method="post">
+    <h2>Opret et nyt ønske</h2>
+
+    <div class="loginFields">
+      <div>
+        <label for="name-field">Navn på ønskelist:</label>
+      </div>
+      <div>
+        <input type="text" id="name-field" name="name" placeholder="Indtast ønskeliste..." required>
+      </div>
+    </div>
+
+    <button type="submit" value="Opret ønske">Opret ønske</button>
+
+  </form>
+</div>
+</body>
+</html>

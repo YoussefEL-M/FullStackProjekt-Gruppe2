@@ -19,6 +19,10 @@ public class Wishlist {
         this.name=name;
     }
 
+    public Wishlist(String name){
+        this.name = name;
+    }
+
     public Wishlist() {
 
     }

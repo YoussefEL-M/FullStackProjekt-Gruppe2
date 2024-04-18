@@ -20,4 +20,8 @@ public class WishlistService {
     public Wishlist getWishlistById(int id) throws EmptyResultDataAccessException {
         return wishlistRepository.getWishlistById(id);
     }
+
+    public void createWishlist(Wishlist wishlist){
+        wishlistRepository.creatWishlist(wishlist);
+    }
 }

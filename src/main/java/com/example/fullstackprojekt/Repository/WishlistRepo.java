@@ -1,5 +1,6 @@
 package com.example.fullstackprojekt.Repository;
 
+import com.example.fullstackprojekt.Model.Wish;
 import com.example.fullstackprojekt.Model.Wishlist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,6 +25,11 @@ public class WishlistRepo {
         String sql = "SELECT * FROM wishlists WHERE id = ?";
         RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
+    }
+
+    public void creatWishlist(Wishlist wishlist){
+        String sql = "INSERT INTO wishlists (id, user_id, name) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, wishlist.getId(), wishlist.getUserId(), wishlist.getName());
     }
 
     public void updateName(String name){

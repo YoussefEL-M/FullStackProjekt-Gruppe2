@@ -102,6 +102,39 @@ public class WishController {
 
         return "redirect:/wishlist";
     }
+    @GetMapping("/WishlistForm")
+    public String createWishlistForm(Model model, HttpSession session) {
+        try {
+            User user = (User) session.getAttribute("User");
+            int userId = user.getId();
+
+            List<Wishlist> wishlists = wishlistService.getWishlistsForUser(userId);
+
+            model.addAttribute("wishlists", wishlists);
+            return "WishlistForm";
+        } catch (EmptyResultDataAccessException e) {
+            return "404";
+        }
+    }
+
+    @PostMapping("/createWishlist")
+    public String createWishlist(
+            @RequestParam("name") String name,
+            HttpSession session) {
+        try {
+            User user = (User) session.getAttribute("User");
+            int userId = user.getId();
+
+            Wishlist newWishlist = new Wishlist(name);
+            newWishlist.setUserId(userId);
+
+            wishlistService.createWishlist(newWishlist);
+
+            return "redirect:/userpage";
+        } catch (Exception e) {
+            return "404";
+        }
+    }
 
     @GetMapping("/")
     public String showWishlist(Model model) {

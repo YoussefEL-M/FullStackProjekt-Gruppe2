@@ -180,3 +180,18 @@ button {
 button:hover {
     background-color: skyblue;
 }
+
+.share-button {
+    margin-bottom: 10px;
+    display: flex;
+    padding-left: 20px;
+}
+
+.share-button button:hover {
+    background-color: #555;
+}
+
+.share-button button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease-out;
+}
