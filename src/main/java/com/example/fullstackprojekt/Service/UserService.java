@@ -41,4 +41,7 @@ public class UserService {
     public User getUserByNameAndPassword(String name, String password) throws EmptyResultDataAccessException{
         return userRepository.getUserByUsernameAndPassword(name, password);
     }
+    public List<User> getFriendRequests(int user_id){
+        return userRepository.getFriendRequests(user_id);
+    }
 }

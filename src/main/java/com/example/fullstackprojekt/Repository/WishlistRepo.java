@@ -27,9 +27,36 @@ public class WishlistRepo {
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
-    public void creatWishlist(Wishlist wishlist){
+    public void createWishlist(Wishlist wishlist){
         String sql = "INSERT INTO wishlists (id, user_id, name) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, wishlist.getId(), wishlist.getUserId(), wishlist.getName());
+    }
+    public void deleteWishlistsById(int id){
+        String sql = "DELETE FROM wishlists WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+
+    public void updateWishlist(Wishlist wishlist) {
+        String sql = "UPDATE wishlists SET name = ?";
+        jdbcTemplate.update(sql, wishlist.getName());
+    }
+
+
+    public List<Wishlist> getFollowedWishlists(int user_id){
+        String sql = "SELECT wishlists.id, wishlists.name, wishlists.user_id FROM wishlists INNER JOIN following_relations ON following_relations.user_id = ?";
+        RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
+        return jdbcTemplate.query(sql, rowMapper, user_id);
+    }
+
+    public void addFollowedWishlist(int user_id, int wishlist_id){
+        String sql = "INSERT INTO following_relations (user_id, wishlist_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, user_id, wishlist_id);
+    }
+
+    public void removeFollowedWishlist(int user_id, int wishlist_id){
+        String sql = "DELETE FROM following_relations WHERE user_id = ? and wishlist_id = ?";
+        jdbcTemplate.update(sql, user_id, wishlist_id);
     }
 
     public void updateName(String name){
