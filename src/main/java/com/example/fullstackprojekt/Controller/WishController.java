@@ -138,7 +138,7 @@ public class WishController {
     }
 
     @GetMapping("/")
-    public String showWishlist(Model model) {
+    public String displayFrontpage() {
 
         return "forside";
     }
@@ -161,6 +161,7 @@ public class WishController {
             @RequestParam("price") double price,
             @RequestParam("amount") int amount,
             @RequestParam("description") String description
+
     ){
         try {
             Wish wishToUpdate = wishService.getWishById(id);
@@ -172,8 +173,36 @@ public class WishController {
 
             wishService.updateWish(wishToUpdate);
 
-            return "redirect:/wishlist?id=" + wishToUpdate.getId();
+            return "redirect:/wishlist?id=" + wishToUpdate.getWishlist_id();
         } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
+    }
+
+    @GetMapping("/updateList/{id}")
+    public String showWishlistUpdateForm(@PathVariable("id") int id, Model model){
+        try {
+            Wishlist wishlist = wishlistService.getWishlistById(id);
+            model.addAttribute("Wislist", wishlist);
+            return "wishlistUpdateForm";
+        } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
+    }
+
+    @PostMapping("/updateWishlist")
+    public String updateWishlist(
+            @RequestParam("id") int id,
+            @RequestParam("name") String name
+            ){
+        try{
+            Wishlist wishlistToUpdate = wishlistService.getWishlistById(id);
+
+            wishlistToUpdate.setName(name);
+
+            wishlistService.updateWishlist(wishlistToUpdate);
+            return "redirect:/userpage?id="+id;
+        }catch (EmptyResultDataAccessException E){
             return "404";
         }
     }
@@ -184,6 +213,14 @@ public class WishController {
 
         return "redirect:/wishlist?id="+id;
     }
+
+    @GetMapping("/deleteList/{id}")
+    public String deleteWishlist(@PathVariable("id") int id){
+        wishlistService.deleteWishlist(id);
+
+        return "redirect:/userpage?id="+id;
+    }
+
     @GetMapping("/reserve/{id}")
     public String reserve(@PathVariable("id") int id, HttpSession session){
         try {
