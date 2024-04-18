@@ -276,14 +276,15 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("brugernavn")String brugernavn,
+    public String createAnAccount(@RequestParam("navn")String navn, @RequestParam("brugernavn")String brugernavn,
                                   @RequestParam("adgangskode") String adgangskode,
                                   RedirectAttributes redirectAttributes) {
 
+        redirectAttributes.addAttribute("name", navn);
         redirectAttributes.addAttribute("username", brugernavn);
         redirectAttributes.addAttribute("password", adgangskode);
 
-        User newUser = new User(brugernavn, adgangskode);
+        User newUser = new User(navn, brugernavn, adgangskode);
         userService.createUser(newUser);
 
         return "redirect:/login";
