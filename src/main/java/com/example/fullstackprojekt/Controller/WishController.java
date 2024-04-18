@@ -68,7 +68,10 @@ public class WishController {
     @GetMapping("/userpage")
     public String userpage(Model model, HttpSession session){
         User user = (User) session.getAttribute("User");
+        int userId = user.getId();
+        List<Wishlist> list = wishlistService.getWishlistsForUser(userId);
         model.addAttribute("link", "wishlist?id="+user.getId());
+        model.addAttribute("list", list);
         return "/userpage";
     }
 
