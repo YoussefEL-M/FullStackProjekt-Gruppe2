@@ -130,9 +130,8 @@ public class WishController {
 
     @PostMapping("/createWishlist")
     public String createWishlist(
-            @RequestParam("name") String name, @RequestParam("isPrivate") boolean isPrivate,
+            @RequestParam("name") String name, @RequestParam(value = "isPrivate", required = false) boolean isPrivate,
             HttpSession session) {
-        try {
             User user = (User) session.getAttribute("User");
             int userId = user.getId();
 
@@ -142,9 +141,6 @@ public class WishController {
             wishlistService.createWishlist(newWishlist);
 
             return "redirect:/userpage";
-        } catch (Exception e) {
-            return "404";
-        }
     }
 
 
@@ -199,7 +195,7 @@ public class WishController {
     @PostMapping("/updateWishlist")
     public String updateWishlist(
             @RequestParam("id") int id,
-            @RequestParam("name") String name, @RequestParam("isPrivate") boolean isPrivate
+            @RequestParam("name") String name, @RequestParam(value = "isPrivate", required = false) boolean isPrivate
             ){
         try{
             Wishlist wishlistToUpdate = wishlistService.getWishlistById(id);
