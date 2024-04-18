@@ -84,7 +84,6 @@ public class WishController {
             user = new User(0, "No user", "No user", "null", false);
         }
         model.addAttribute("user", user);
-        model.addAttribute("link", "wishlist?id="+user.getId());
         model.addAttribute("list", list);
         return "/userpage";
     }

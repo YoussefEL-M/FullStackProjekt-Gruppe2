@@ -41,9 +41,9 @@
         </thead>
         <tbody>
             <tr th:each="wishlist : ${list}">
-                <td> <a th:text="${wishlist.name}" th:href="@{'/' + ${link}}"></a></td>
-                <td> <a th:href="@{'/update/' + ${wishlist.id}}" href="wishlistUpdateForm.html">Rediger ønskeliste</a></td>
-                <td> <a th:href="@{'/delete/' + ${wishlist.id}}" href="userpage.html" onclick="return confirm('Er du sikker på, at du vil slette denne ønskeliste?')">Slet ønskeliste</a></td>
+                <td> <a th:text="${wishlist.name}" th:href="@{'wishlist?=id' + ${wishlist.id}}"></a></td>
+                <td> <a th:href="@{'/updateWishlist/' + ${wishlist.id}}" href="wishlistUpdateForm.html">Rediger ønskeliste</a></td>
+                <td> <a th:href="@{'/deleteList/' + ${wishlist.id}}" href="userpage.html" onclick="return confirm('Er du sikker på, at du vil slette denne ønskeliste?')">Slet ønskeliste</a></td>
             </tr>
         </tbody>
     </table>
