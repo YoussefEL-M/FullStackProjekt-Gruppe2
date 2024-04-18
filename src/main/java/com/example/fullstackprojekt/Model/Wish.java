@@ -21,9 +21,12 @@ public class Wish {
     private int amount;
     private String description;
     private String url;
+
+    private String image_url;
     private boolean reserved;
-    private int user_id;
     private int wishlist_id;
+
+    private int reserved_by;
 
     public Wish(){
 
@@ -40,12 +43,13 @@ public class Wish {
         this.reserved = reserved;
     }
 
-    public Wish(String name, double price, int amount, String description, String url) {
+    public Wish(String name, double price, int amount, String description, String url, String imgUrl) {
         this.name = name;
         this.price = price;
         this.amount = amount;
         this.description = description;
         this.url=url;
+        image_url=imgUrl;
     }
 
     public int getId() {
@@ -104,13 +108,17 @@ public class Wish {
         this.reserved = reserved;
     }
 
-
-    public int getUser_id() {
-        return user_id;
+    public int getReserved_by(){
+        return reserved_by;
     }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setReserved_by(int id){
+        reserved_by=id;
+    }
+    public String getImage_url(){
+        return image_url;
+    }
+    public void setImage_url(String url){
+        image_url=url;
     }
 
     public void setWishlist_id(int wishlist_id) {

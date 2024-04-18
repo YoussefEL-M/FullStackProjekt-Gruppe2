@@ -94,9 +94,10 @@ public class WishController {
             @RequestParam("amount") int amount,
             @RequestParam("description") String description,
             @RequestParam("url") String url,
-            @RequestParam("wishlistId") int wishlistId
+            @RequestParam("wishlistId") int wishlistId,
+            @RequestParam("img-url") String imgUrl
     ) {
-        Wish newWish = new Wish(name, price, amount, description, url);
+        Wish newWish = new Wish(name, price, amount, description, url, imgUrl);
         newWish.setWishlist_id(wishlistId);
         wishService.createWish(newWish);
 
@@ -150,6 +151,40 @@ public class WishController {
 
         return "redirect:/wishlist?id="+id;
     }
+    @GetMapping("/reserve/{id}")
+    public String reserve(@PathVariable("id") int id, HttpSession session){
+        try {
+            Wish wish = wishService.getWishById(id);
+            User user = (User) session.getAttribute("User");
+            if(user != null){
+                wish.setReserved(true);
+                wish.setReserved_by(user.getId());
+                wishService.updateWish(wish);
+            }
+
+        } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
+
+        return "redirect:/wishlist?id="+id;
+    }
+    @GetMapping("/cancel/{id}")
+    public String cancel(@PathVariable("id") int id, HttpSession session){
+        try {
+            Wish wish = wishService.getWishById(id);
+            User user = (User) session.getAttribute("User");
+            if(user.getId() == wish.getReserved_by()){
+                wish.setReserved_by(0);
+                wish.setReserved(false);
+                wishService.updateWish(wish);
+            }
+
+        } catch (EmptyResultDataAccessException E){
+            return "404";
+        }
+
+        return "redirect:/wishlist?id="+id;
+    }
 
     @GetMapping("/createUser")
     public String createUser() {
@@ -172,22 +207,17 @@ public class WishController {
     }
 
     @GetMapping("/wishlist")
-    public String wishlist(Model model, HttpSession session){
+    public String wishlist(@RequestParam("id") int id, Model model, HttpSession session){
         try {
             User user = (User) session.getAttribute("User");
-            if (user != null) {
-                int userId = user.getId();
-                Wishlist wishlist = wishlistService.getWishlistById(userId);
-                if (wishlist != null) {
-                    model.addAttribute("wishlistObject", wishlist);
+            if(user == null)
+                user = new User(0, "No user", "No user", "null", false);
+            Wishlist wishlist = wishlistService.getWishlistById(id);
+            model.addAttribute("wishlistObject", wishlist);
                     model.addAttribute("wishlist", wishService.getWishesInWishlist(wishlist.getId()));
+                    model.addAttribute("user", user);
                     return "wishlist";
-                } else {
-                    return "denied";
-                }
-            } else {
-                return "login";
-            }
+
         } catch (EmptyResultDataAccessException E){
             return "404";
         }

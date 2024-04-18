@@ -29,8 +29,8 @@ public class WishRepo {
     }
 
     public void createWish(Wish wish) {
-        String sql = "INSERT INTO wishes (name, price, amount, description, url, wishlist_id) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getWishlist_id());
+        String sql = "INSERT INTO wishes (name, price, amount, description, url, wishlist_id, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getWishlist_id(), wish.getImage_url());
     }
 
     public void deleteWishById(int id){
@@ -45,8 +45,8 @@ public class WishRepo {
     }
 
     public void updateWish(Wish wish) {
-        String sql = "UPDATE wishes SET name = ?, price = ?, amount = ?, description = ?, url = ? WHERE id = ?";
-        jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.getId());
+        String sql = "UPDATE wishes SET name = ?, price = ?, amount = ?, description = ?, url = ?, reserved = ?, reserved_by = ?, image_url = ? WHERE id = ?";
+        jdbcTemplate.update(sql, wish.getName(), wish.getPrice(), wish.getAmount(), wish.getDescription(), wish.getUrl(), wish.isReserved(), wish.getReserved_by(), wish.getImage_url(), wish.getId());
     }
 
 }
