@@ -20,8 +20,8 @@
 
     <div class="main-content">
 
-        <h1>Velkommen til din personlige ønskelist </h1>
-
+        <h1 th:if="${user.id == wishlistObject.userId}" th:text="'Velkommen til din personlige ønskeliste ' + ${wishlistObject.name}">Velkommen til din personlige ønskeliste </h1>
+        <h1 th:if="${user.id != wishlistObject.userId}" th:text="${wishlistObject.name}"></h1>
         <!--<div class="wish-container">
         <div class="wish-container">
             <div class="wish-item" th:each="wish : ${wishlist}">
@@ -43,19 +43,30 @@
                 <th>Antal ønsket</th>
                 <th>Beskrivelse</th>
                 <th>Billede</th>
-                <th>Opdater ønske</th>
-                <th>Slet ønske</th>
+                <th th:if="${user.id == wishlistObject.userId}">Opdater ønske</th>
+                <th th:if="${user.id == wishlistObject.userId}">Slet ønske</th>
+                <th th:if="${user.id != wishlistObject.userId}">Reservation</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="wish : ${wishlist}">
-                <td th:text="${wish.name}"></td>
+                <td><a th:href="@{${wish.url}}" th:text="${wish.name}"></a></td>
                 <td th:text="${wish.price}"></td>
                 <td th:text="${wish.amount}"></td>
                 <td th:text="${wish.description}"></td>
-                <td> <img th:src="@{${wish.url}}" alt="If this image displays, I'll eat my hat."> </td>
-                <td> <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Opdater ønske</a></td>
-                <td> <a th:href="@{'/delete/' + ${wish.id}}" href="forside.html">Slet ønske</a></td>
+                <td> <img th:src="@{${wish.image_url}}" alt="If this image displays, I'll eat my hat."> </td>
+                <td th:if="${user.id == wishlistObject.userId}"> <a th:href="@{'/update/' + ${wish.id}}" href="wishUpdateForm.html">Opdater ønske</a></td>
+                <td th:if="${user.id == wishlistObject.userId}"> <a th:href="@{'/delete/' + ${wish.id}}"  href="forside.html" onclick="return confirm('Er du sikker på du vil slette dette ønske?')">Slet ønske</a></td>
+                <td th:if="${user.id != wishlistObject.userId}" th:switch="${wish.reserved}">
+                    <span th:case="false">
+                        <a th:if="${user.id == 0}" th:href="null">Log ind for at reservere ønsker</a>
+                        <a th:if="${user.id != 0}" th:href="@{'/reserve/' + ${wish.id}}">Reserver ønske</a>
+                    </span>
+                    <span th:case="true">
+                        <a th:if="${wish.reserved_by != null && user.id != wish.reserved_by}" th:href="null">Reserveret</a>
+                        <a th:if="${wish.reserved_by != null && user.id == wish.reserved_by}" th:href="@{'/cancel/' + ${wish.id}}"  onclick="return confirm('Er du sikker på du vil frigive din reservation?')">Frigiv reservation</a>
+                    </span>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -27,10 +27,22 @@ public class WishlistRepo {
         return jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
-    public void creatWishlist(Wishlist wishlist){
+    public void createWishlist(Wishlist wishlist){
         String sql = "INSERT INTO wishlists (id, user_id, name) VALUES (?, ?, ?)";
         jdbcTemplate.update(sql, wishlist.getId(), wishlist.getUserId(), wishlist.getName());
     }
+
+    public void deleteWishlistsById(int id){
+        String sql = "DELETE FROM wishlists WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
+
+
+    public void updateWishlist(Wishlist wishlist) {
+        String sql = "UPDATE wishlists SET name = ?";
+        jdbcTemplate.update(sql, wishlist.getName());
+    }
+
 
     public void updateName(String name){
 

@@ -22,6 +22,15 @@ public class WishlistService {
     }
 
     public void createWishlist(Wishlist wishlist){
-        wishlistRepository.creatWishlist(wishlist);
+        wishlistRepository.createWishlist(wishlist);
     }
+
+    public void deleteWishlist(int id){
+        wishlistRepository.deleteWishlistsById(id);
+    }
+
+    public void updateWishlist(Wishlist wishlist){
+        wishlistRepository.updateWishlist(wishlist);
+    }
+
 }

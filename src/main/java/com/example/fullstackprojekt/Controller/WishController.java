@@ -101,7 +101,7 @@ public class WishController {
         newWish.setWishlist_id(wishlistId);
         wishService.createWish(newWish);
 
-        return "redirect:/wishlist";
+        return "redirect:/wishlist?id=" + wishlistId;
     }
     @GetMapping("/WishlistForm")
     public String createWishlistForm(Model model, HttpSession session) {
