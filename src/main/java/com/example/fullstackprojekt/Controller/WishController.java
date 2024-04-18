@@ -276,9 +276,16 @@ public class WishController {
     }
 
     @PostMapping("/createUser")
-    public String createAnAccount(@RequestParam("navn")String navn, @RequestParam("brugernavn")String brugernavn,
+    public String createAnAccount(@RequestParam("navn")String navn,
+                                  @RequestParam("brugernavn")String brugernavn,
                                   @RequestParam("adgangskode") String adgangskode,
-                                  RedirectAttributes redirectAttributes) {
+                                  RedirectAttributes redirectAttributes,
+                                  Model model) {
+        User existingUser = userService.getUserByUsername(brugernavn);
+        if(existingUser != null){
+            model.addAttribute("usernameExists", true);
+            return "createUser";
+        }else {
 
         redirectAttributes.addAttribute("name", navn);
         redirectAttributes.addAttribute("username", brugernavn);
@@ -287,7 +294,8 @@ public class WishController {
         User newUser = new User(navn, brugernavn, adgangskode);
         userService.createUser(newUser);
 
-        return "redirect:/login";
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/wishlist")
