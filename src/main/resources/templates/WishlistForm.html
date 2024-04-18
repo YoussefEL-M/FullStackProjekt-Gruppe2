@@ -8,14 +8,21 @@
 <body>
 <div class="createWishForm">
   <form action="/createWishlist" method="post">
-    <h2>Opret et nyt ønske</h2>
+    <h2>Opret en ny ønskeliste</h2>
 
     <div class="loginFields">
       <div>
-        <label for="name-field">Navn på ønskelist:</label>
+        <label for="name-field">Navn på ønskeliste:</label>
       </div>
       <div>
         <input type="text" id="name-field" name="name" placeholder="Indtast ønskeliste..." required>
+      </div>
+    </div>
+
+    <div class="loginFields">
+      <div>
+        <label for="isPrivate">Privat ønskeliste</label>
+        <input type="checkbox" id="isPrivate" name="isPrivate">
       </div>
     </div>
 
