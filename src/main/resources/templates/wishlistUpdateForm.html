@@ -6,18 +6,18 @@
     <link rel="stylesheet" href="/CSS/wishform.css" th:href="@{/CSS/wishform.css}">
 </head>
 <body>
-
-<form action="/updateList/" method="post">
+<div class="createWishForm">
+<form action="/updateWishlist" method="post">
     <h2>Opdater ønske</h2>
 
-    <input name="id" type="number" hidden th:value="${Wislist.id}">
+    <input name="id" type="number" hidden th:value="${Wishlist.id}">
 
     <div class="loginFields">
         <div>
             <label for="name-field">Navn på ønske:</label>
         </div>
         <div>
-            <input id="name-field" name="name" type="text" th:value="${Wislist.id}">
+            <input id="name-field" name="name" type="text" th:value="${Wishlist.name}">
         </div>
     </div>
 
@@ -30,6 +30,6 @@
 
     <button type="submit" value="Opdater ønske">Opdater ønske</button>
 </form>
-
+</div>
 </body>
 </html>
