@@ -66,8 +66,12 @@ public class WishController {
     }
 
     @GetMapping("/userpage")
-    public String userpage(Model model, HttpSession session){
+    public String userpage(Model model, HttpSession session) {
+
         User user = (User) session.getAttribute("User");
+        if(user == null)
+            user = new User(0, "No user", "No user", "null", false);
+        model.addAttribute("user", user);
         model.addAttribute("link", "wishlist?id="+user.getId());
         return "/userpage";
     }
@@ -138,8 +142,12 @@ public class WishController {
     }
 
     @GetMapping("/")
-    public String showWishlist(Model model) {
+    public String showWishlist(Model model, HttpSession session) {
 
+        User user = (User) session.getAttribute("User");
+        if(user == null)
+            user = new User(0, "No user", "No user", "null", false);
+        model.addAttribute("user", user);
         return "forside";
     }
 
