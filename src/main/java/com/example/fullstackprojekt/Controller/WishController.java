@@ -281,7 +281,12 @@ public class WishController {
                                   @RequestParam("adgangskode") String adgangskode,
                                   RedirectAttributes redirectAttributes,
                                   Model model) {
-        User existingUser = userService.getUserByUsername(brugernavn);
+        User existingUser;
+        try {
+            existingUser = userService.getUserByUsername(brugernavn);
+        } catch (EmptyResultDataAccessException E){
+            existingUser=null;
+        }
         if(existingUser != null){
             model.addAttribute("usernameExists", true);
             return "createUser";

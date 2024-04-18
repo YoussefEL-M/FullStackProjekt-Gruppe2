@@ -46,13 +46,7 @@ public class UserRepo {
     public User getUserByUsername(String username) throws EmptyResultDataAccessException {
         String sql = "SELECT * FROM users WHERE username = ?";
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
-        List<User> users = jdbcTemplate.query(sql, rowMapper, username);
-
-        if (users.isEmpty()) {
-            return null;
-        } else {
-            return users.getFirst();
-        }
+        return jdbcTemplate.queryForObject(sql, rowMapper, username);
     }
 
     public User getUserByUsernameAndPassword(String username, String password) throws EmptyResultDataAccessException {
