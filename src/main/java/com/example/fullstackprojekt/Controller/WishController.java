@@ -80,8 +80,9 @@ public class WishController {
         User user = (User) session.getAttribute("User");
         int userId = user.getId();
         List<Wishlist> list = wishlistService.getWishlistsForUser(userId);
-        if(user == null)
+        if(user == null) {
             user = new User(0, "No user", "No user", "null", false);
+        }
         model.addAttribute("user", user);
         model.addAttribute("link", "wishlist?id="+user.getId());
         model.addAttribute("list", list);
@@ -149,11 +150,6 @@ public class WishController {
             return "redirect:/userpage";
     }
 
-    @GetMapping("/")
-    public String displayFrontpage() {
-
-        return "forside";
-    }
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
