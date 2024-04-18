@@ -10,6 +10,9 @@ body {
     width: 80%;
     margin: 0 auto;
     padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .container-frontpage {
@@ -26,6 +29,9 @@ header {
 .logo img {
     height: 100px;
     margin-left: 20px;
+}
+.login-button{
+    margin-right: 20px;
 }
 
 .login-button button {
@@ -227,7 +233,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10%;
+    padding-bottom: 5%;
     gap:15px;
     padding-left: 5%;
     padding-right:1%;
@@ -255,54 +261,16 @@ p {
     }
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background:linear-gradient(to right, lightskyblue, steelblue);;
-    color: #000000;
-}
-
-.create {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.createWishForm label{
-    color: black;
-}
-
-.createWishForm {
-    color: #000000;
-}
-
-
-.create a:hover {
-    text-decoration: underline;
-}
-
 footer {
-    background:linear-gradient(to right, lightskyblue, steelblue);
-    color: #fff;
-    padding: 20px 0;
-    position: absolute;
-    bottom: 0;
+    background: linear-gradient(to right, lightskyblue, steelblue);
+    padding: 1em 0;
+    color: white;
     width: 100%;
+    margin-top: auto;
+    box-sizing: border-box;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .contact-form, .newsletter-form {
     width: 48%;
@@ -334,7 +302,7 @@ textarea {
 
 button {
     padding: 10px 20px;
-    background-color: #814CBB;
+    background-color: steelblue;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -342,5 +310,5 @@ button {
 }
 
 button:hover {
-    background-color: #5E338E;
+    background-color: skyblue;
 }

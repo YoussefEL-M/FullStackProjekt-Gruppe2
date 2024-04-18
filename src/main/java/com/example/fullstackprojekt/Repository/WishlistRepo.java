@@ -28,10 +28,9 @@ public class WishlistRepo {
     }
 
     public void createWishlist(Wishlist wishlist){
-        String sql = "INSERT INTO wishlists (id, user_id, name) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, wishlist.getId(), wishlist.getUserId(), wishlist.getName());
+        String sql = "INSERT INTO wishlists (id, user_id, name, private) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, wishlist.getId(), wishlist.getUserId(), wishlist.getName(), wishlist.isPrivate());
     }
-
     public void deleteWishlistsById(int id){
         String sql = "DELETE FROM wishlists WHERE id = ?";
         jdbcTemplate.update(sql, id);
@@ -43,6 +42,22 @@ public class WishlistRepo {
         jdbcTemplate.update(sql, wishlist.getName());
     }
 
+
+    public List<Wishlist> getFollowedWishlists(int user_id){
+        String sql = "SELECT wishlists.id, wishlists.name, wishlists.user_id, wishlist.private FROM wishlists INNER JOIN following_relations ON following_relations.user_id = ?";
+        RowMapper<Wishlist> rowMapper = new BeanPropertyRowMapper<>(Wishlist.class);
+        return jdbcTemplate.query(sql, rowMapper, user_id);
+    }
+
+    public void addFollowedWishlist(int user_id, int wishlist_id){
+        String sql = "INSERT INTO following_relations (user_id, wishlist_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, user_id, wishlist_id);
+    }
+
+    public void removeFollowedWishlist(int user_id, int wishlist_id){
+        String sql = "DELETE FROM following_relations WHERE user_id = ? and wishlist_id = ?";
+        jdbcTemplate.update(sql, user_id, wishlist_id);
+    }
 
     public void updateName(String name){
 

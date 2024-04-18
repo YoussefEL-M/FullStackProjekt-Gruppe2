@@ -64,7 +64,7 @@
                 <td th:if="${user.id == wishlistObject.userId}"> <a th:href="@{'/delete/' + ${wish.id}}"  href="forside.html" onclick="return confirm('Er du sikker på du vil slette dette ønske?')">Slet ønske</a></td>
                 <td th:if="${user.id != wishlistObject.userId}" th:switch="${wish.reserved}">
                     <span th:case="false">
-                        <a th:if="${user.id == 0}" th:href="null">Log ind for at reservere ønsker</a>
+                        <a th:if="${user.id == 0}" th:href="@{/login}">Log ind for at reservere ønsker</a>
                         <a th:if="${user.id != 0}" th:href="@{'/reserve/' + ${wish.id}}">Reserver ønske</a>
                     </span>
                     <span th:case="true">
