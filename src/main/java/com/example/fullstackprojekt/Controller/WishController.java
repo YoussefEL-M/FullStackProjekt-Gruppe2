@@ -193,12 +193,13 @@ public class WishController {
     @PostMapping("/updateWishlist")
     public String updateWishlist(
             @RequestParam("id") int id,
-            @RequestParam("name") String name
+            @RequestParam("name") String name, @RequestParam("isPrivate") boolean isPrivate
             ){
         try{
             Wishlist wishlistToUpdate = wishlistService.getWishlistById(id);
 
             wishlistToUpdate.setName(name);
+            wishlistToUpdate.setPrivate(isPrivate);
 
             wishlistService.updateWishlist(wishlistToUpdate);
             return "redirect:/userpage?id="+wishlistToUpdate.getUserId();
