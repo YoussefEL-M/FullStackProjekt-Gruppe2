@@ -7,17 +7,17 @@
 </head>
 <body>
 
-<form action="/updateWishlist" method="post">
+<form action="/updateList/" method="post">
     <h2>Opdater ønske</h2>
 
-    <input name="id" type="number" hidden th:value="${Wishlist.id}">
+    <input name="id" type="number" hidden th:value="${Wislist.id}">
 
     <div class="loginFields">
         <div>
             <label for="name-field">Navn på ønske:</label>
         </div>
         <div>
-            <input id="name-field" name="name" type="text" th:value="${Wish.name}">
+            <input id="name-field" name="name" type="text" th:value="${Wislist.id}">
         </div>
     </div>
 
