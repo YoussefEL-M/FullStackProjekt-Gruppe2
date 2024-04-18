@@ -38,8 +38,12 @@ public class WishController {
 
 
     @GetMapping("/")
-    public String displayFrontpage() {
+    public String displayFrontpage(Model model, HttpSession session) {
 
+        User user = (User) session.getAttribute("User");
+        if(user == null)
+            user = new User(0, "No user", "No user", "null", false);
+        model.addAttribute("user", user);
         return "forside";
     }
 
