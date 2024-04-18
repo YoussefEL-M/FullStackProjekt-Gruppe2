@@ -24,4 +24,13 @@ public class WishlistService {
     public void createWishlist(Wishlist wishlist){
         wishlistRepository.creatWishlist(wishlist);
     }
+    public List<Wishlist> getFollowedWishlists(int user_id){
+        return wishlistRepository.getFollowedWishlists(user_id);
+    }
+    public void addFollowedWishlist(int user_id, int wishlist_id){
+        wishlistRepository.addFollowedWishlist(user_id, wishlist_id);
+    }
+    public void removeFollowedWishlist(int user_id, int wishlist_id){
+        wishlistRepository.removeFollowedWishlist(user_id, wishlist_id);
+    }
 }
