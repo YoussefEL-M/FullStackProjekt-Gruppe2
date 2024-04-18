@@ -37,6 +37,12 @@ public class WishController {
     UserService userService;
 
 
+    @GetMapping("/")
+    public String displayFrontpage() {
+
+        return "forside";
+    }
+
     @GetMapping("/login")
     public String login() {
 
@@ -137,11 +143,7 @@ public class WishController {
         }
     }
 
-    @GetMapping("/")
-    public String displayFrontpage() {
 
-        return "forside";
-    }
 
     @GetMapping("/update/{id}")
     public String showUpdateForm(@PathVariable("id") int id, Model model) {
