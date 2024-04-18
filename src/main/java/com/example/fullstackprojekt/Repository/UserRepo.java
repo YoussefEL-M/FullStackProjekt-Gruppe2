@@ -67,22 +67,27 @@ public class UserRepo {
         RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
         return !jdbcTemplate.query(sql, rowMapper, user1, user2, user1, user2).isEmpty();
     }
-    /*
+
     public void sendFriendRequest(int user_id, int friend_id){
         String sql = "INSERT INTO friend_relations (user_id, friend_id) VALUES (?, ?)";
         jdbcTemplate.update(sql, user_id, friend_id);
     }
     public void updateFriendRequest(int user_id, int friend_id, boolean accepted){
         String sql;
-        if(accepted){
-            sql = "UPDATE friend_relations SET"
-        }
+        if(accepted)
+            sql = "UPDATE friend_relations SET pending = ? WHERE user_id = ? and friend_id = ?";
+
+        else
+            sql = "DELETE FROM friend_relations WHERE pending = ? and user_id = ? and friend_id = ?";
+
+        jdbcTemplate.update(sql, accepted, user_id, friend_id);
     }
 
     public void removeFriend(int user1, int user2){
-
+        String sql = "DELETE FROM friend_relations where user_id = ? and friend_id = ?";
+        jdbcTemplate.update(sql, user1, user2);
     }
-    */
+
 
 
 }
