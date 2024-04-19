@@ -14,7 +14,7 @@
         </div>
         <div class="login-button">
             <span th:if="${user.id == 0}">
-                        <a th:href="@{/login}"> <button>Login </button></a>
+                <a th:href="@{/login}"> <button>Login </button></a>
             </span>
             <span th:if="${user.id != 0}">
                         <a th:href="@{/userpage}"> <button>Profil</button></a>
