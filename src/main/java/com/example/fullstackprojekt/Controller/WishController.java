@@ -93,6 +93,7 @@ public class WishController {
         model.addAttribute("list", list);
         model.addAttribute("following", followingList);
 
+        System.out.println("Hejsa "+userId);
 
         return "/userpage";
     }
