@@ -95,7 +95,7 @@ public class WishController {
 
         System.out.println("Hejsa "+userId);
 
-        return "/userpage";
+        return "userpage";
     }
 
     @GetMapping("/WishForm")
