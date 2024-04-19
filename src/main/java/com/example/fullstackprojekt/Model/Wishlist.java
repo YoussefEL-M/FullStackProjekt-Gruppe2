@@ -1,14 +1,14 @@
 package com.example.fullstackprojekt.Model;
 
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Entity
+//@Entity
 public class Wishlist {
 
-    @Id
+    //@Id
     private int id;
     private int userId;
     private String name;

@@ -1,20 +1,20 @@
 package com.example.fullstackprojekt.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-import jakarta.persistence.*;
 //import jakarta.persistence.Entity;
 //import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+//import jakarta.persistence.*;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
+//import jakarta.persistence.Entity;
+//import jakarta.persistence.Id;
 
 import java.util.UUID;
 
-@Entity
+//@Entity
 public class Wish {
 
-    @Id
+    //@Id
     private int id;
     private String name;
     private double price;
